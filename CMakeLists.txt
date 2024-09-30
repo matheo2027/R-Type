@@ -1,9 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
-
 project(rtype)
 
-include_directories(src)
+set(CMAKE_CXX_STANDARD 17)
 
-file(GLOB_RECURSE sources "src/*.cpp")
-
-add_executable(rtype ${sources})
+add_subdirectory(server)
+add_subdirectory(client)
