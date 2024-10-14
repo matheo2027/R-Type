@@ -20,7 +20,7 @@ int main()
         }
 
         display.clear();
-        display.draw("Hello, SFML!", 200, 150);
+        display.draw("R-TYPE", 200, 150);
 
         if (display.getKeyDown(gfx::K_ESC))
         {
