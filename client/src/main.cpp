@@ -22,11 +22,6 @@ int main()
         display.clear();
         display.draw("R-TYPE", 200, 150);
 
-        if (display.getKeyDown(gfx::K_ESC))
-        {
-            display.close();
-        }
-
         display.update();
     }
 
