@@ -34,8 +34,7 @@ A little intro about the installation.
 ```bash
 git clone git@github.com:matheo2027/R-Type.git
 cd ./R-Type
-cmake -S . -B build
-cmake --build build
+./start.sh
 ```
 
 ### Overview
