@@ -13,11 +13,9 @@
 This project of the Advanced C++ knowledge unit will introduce you to networked video game
 development, and will give you the opportunity to explore advanced development techniques
 as well as to learn good software engineering practices.
+
 The goal is to implement a multi-threaded server and a graphical client for a well-known legacy
 video game called R-Type, using a game engine of your own design.
-First, you will develop the core architecture of the game and deliver a working prototype, and in a
-second time, you will expand several aspects the prototype to the next level, exploring specialized
-areas of your choice from a list of proposed options.
 
 ### Technologies
 
