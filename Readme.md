@@ -49,6 +49,8 @@ cd ./R-Type
 ### Overview
 
 ***
+If you want to see the comparative analysis, read this: [Comparative Analysis](./ComparativeAnalysis.md)
+
 Here are the different github actions for check compilation, building documentation and auto formatting before push to miror.
 
 ![Screenshot](assets/Readme/Actions.png)
