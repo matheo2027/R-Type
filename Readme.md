@@ -45,7 +45,8 @@ cd ./R-Type
 ### Overview
 
 ***
+Here are the different github actions for check compilation, building documentation and auto formatting before push to miror.
 
-<!-- ![Screenshot](JAM_OPEN_DATA.png) -->
+![Screenshot](assets/Readme/Actions.png)
 
 group members: matheo.piques@epitech.eu raphael.verrouil@epitech.eu raphael.fouche@epitech.eu babacar.sow@epitech.eu
