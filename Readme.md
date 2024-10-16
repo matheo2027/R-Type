@@ -30,6 +30,7 @@ A list of technologies used within the project:
 
 ***
 A little intro about the installation.
+Don't forgot to ```chmod +x``` all the .sh files.
 
 ```bash
 git clone git@github.com:matheo2027/R-Type.git
@@ -40,6 +41,9 @@ cd ./R-Type
 
 # If you want to create the documentation :
 ./StartDoc.sh
+
+# If you want to delete all the documentation files and stop the project :
+./StopAll.sh
 ```
 
 ### Overview
