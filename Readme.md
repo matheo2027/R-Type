@@ -17,6 +17,8 @@ as well as to learn good software engineering practices.
 The goal is to implement a multi-threaded server and a graphical client for a well-known legacy
 video game called R-Type, using a game engine of your own design.
 
+If you want to see the comparative analysis, read this: [Comparative Analysis](./ComparativeAnalysis.md)
+
 ### Technologies
 
 ***
@@ -49,8 +51,6 @@ cd ./R-Type
 ### Overview
 
 ***
-If you want to see the comparative analysis, read this: [Comparative Analysis](./ComparativeAnalysis.md)
-
 Here are the different github actions for check compilation, building documentation and auto formatting before push to miror.
 
 ![Screenshot](assets/Readme/Actions.png)
