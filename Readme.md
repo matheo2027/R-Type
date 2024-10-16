@@ -23,6 +23,8 @@ video game called R-Type, using a game engine of your own design.
 A list of technologies used within the project:
 
 * [C++](https://en.cppreference.com/w/): latest available
+* [SFML](https://www.sfml-dev.org/index.php): latest available
+
 
 ### Installation
 
@@ -32,7 +34,12 @@ A little intro about the installation.
 ```bash
 git clone git@github.com:matheo2027/R-Type.git
 cd ./R-Type
+
+# If you want to start the project :
 ./start.sh
+
+# If you want to create the documentation :
+./StartDoc.sh
 ```
 
 ### Overview
