@@ -6,10 +6,16 @@ GENERATE_HTML          = YES
 GENERATE_LATEX         = NO
 GENERATE_RTF           = NO
 INPUT                  = ./client/include \
-                        ./components/include \
-                        ./core/include \
+                        ./client/src \
+                        ./ecs/include/components \
+                        ./ecs/include/systems \
+                        ./ecs/include/display \
+                        ./ecs/include \
+                        ./ecs/src/display \
+                        ./ecs/src/system \
+                        ./ecs/src \
                         ./server/include \
-                        ./systems/include \
+                        ./server/src \
                         ./utils
 RECURSIVE              = YES
 EXTRACT_ALL            = YES
