@@ -1,9 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(rtype)
+project(r-type)
 
-include_directories(src)
-
-file(GLOB_RECURSE sources "src/*.cpp")
-
-add_executable(rtype ${sources})
+add_subdirectory(ecs)
+add_subdirectory(client)
