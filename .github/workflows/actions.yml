@@ -1,5 +1,5 @@
-name: action
-run-name: ${{ github.actor }} asking for main action
+name: CI Pipeline
+run-name: ${{ github.actor }} CI Pipeline
 on:
   push:
     branches-ignore:
@@ -9,36 +9,54 @@ on:
       - "ga-ignore-*"
 
 jobs:
-#   check_program_compilation:
-#     name: check_program_compilation
-#     runs-on: ubuntu-latest
-#     timeout-minutes: 2
-#     steps:
-#       - name: Checkout GH repository
-#         uses: actions/checkout@v4
-#         with:
-#           repository: ""
+  check_program_compilation:
+    name: Check Program Compilation
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout GH repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-#       - name: Compile project
-#         run: cmake -S . -B build
+      - name: Remove build directory
+        run: rm -rf build
 
-#       - name: Build project
-#         run: cmake --build build -- -j $(nproc --all)
+      - name: Generate build files
+        run: cmake -S . -B build
 
-#       # - name: Clean project
-#       #   run: make clean
+      - name: Compile project
+        run: cmake --build build -- -j $(nproc --all)
 
-#       - name: Check executables
-#         run: |
-#           for file in ${{ vars.EXECUTABLES }}; do
-#             if [ ! -x "./${file}" ]; then
-#                 echo "File $file does not exist or is not executable"
-#                 exit 1
-#             fi
-#           done
+      - name: Check executables
+        run: |
+          for file in ${{ vars.EXECUTABLES }}; do
+            if [ ! -x "./build/${file}" ]; then
+                echo "File $file does not exist or is not executable"
+                exit 1
+            fi
+          done
+
+  check_doc_build:
+    name: Check Documentation Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout GH repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Clean CMake cache
+        run: rm -rf CMakeCache.txt CMakeFiles Doxyfile *.cmake CMakeDoxyfile.in
+
+      - name: Generate CMake files
+        run: cmake .
+
+      - name: Build documentation
+        run: cmake --build . --target doc_doxygen
 
   push_to_mirror:
-    name: push_to_mirror
+    name: Push to Mirror
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
     steps:
@@ -46,6 +64,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
       - name: Push to mirror repository
         uses: pixta-dev/repository-mirroring-action@v1
         with:
