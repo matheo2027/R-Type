@@ -8,12 +8,12 @@ Background::Background(ecs::EntityManager &entityManager, display::IDisplay &dis
 {
 }
 
-void Background::update(float dt)
-{
-    for (unsigned int i = 0; i < m_entityManager.size(); i++) {
-        auto background = m_entityManager.getComponent<component::Background>(i);
-        auto position = m_entityManager.getComponent<component::Position>(i);
-    }
-}
+// void Background::update(float dt)
+// {
+//     for (unsigned int i = 0; i < m_entityManager.size(); i++) {
+//         auto background = m_entityManager.getComponent<component::Background>(i);
+//         auto position = m_entityManager.getComponent<component::Position>(i);
+//     }
+// }
 
 }

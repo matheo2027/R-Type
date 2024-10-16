@@ -10,4 +10,4 @@ find_package(SFML 2.5 COMPONENTS graphics system window REQUIRED)
 
 target_include_directories(${PROJECT_NAME} PUBLIC include)
 
-target_link_libraries(${PROJECT_NAME} sfml-graphics sfml-system sfml-window)
+target_link_libraries(${PROJECT_NAME} sfml-graphics sfml-system sfml-window sfml-network)
