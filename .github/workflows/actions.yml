@@ -63,7 +63,8 @@ jobs:
   push_to_mirror:
     name: Push to Mirror
     runs-on: ubuntu-latest
-    if: github.event_name == 'push'
+    needs: [check_program_compilation, check_doc_build]
+    if: github.event_name == 'push' && needs.check_program_compilation.result == 'success' && needs.check_doc_build.result == 'success'
     steps:
       - name: Checkout GH repository
         uses: actions/checkout@v4
