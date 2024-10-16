@@ -2,11 +2,13 @@ cmake_minimum_required(VERSION 3.10)
 
 project(r-type)
 
+# Définir le chemin SFML ici
+set(SFML_DIR "/usr/lib/x86_64-linux-gnu/cmake/SFML")
+
 add_subdirectory(ecs)
 add_subdirectory(client)
 
 # Doxygen
-
 find_package(Doxygen)
 
 if (DOXYGEN_FOUND)
