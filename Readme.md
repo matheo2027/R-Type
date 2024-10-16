@@ -26,7 +26,7 @@ A list of technologies used within the project:
 
 * [C++](https://en.cppreference.com/w/): latest available
 * [SFML](https://www.sfml-dev.org/index.php): latest available
-
+* [ASTYLE](https://astyle.sourceforge.net/astyle.html): latest available
 
 ### Installation
 
