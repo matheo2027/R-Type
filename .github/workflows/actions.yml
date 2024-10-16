@@ -9,10 +9,24 @@ on:
       - "ga-ignore-*"
 
 jobs:
+  auto_format:
+    name: Auto Format Code
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout GH repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Install Clang-Format
+        run: sudo apt-get install -y clang-format
+      - name: Run Clang-Format
+        run: |
+          find . -name "*.cpp" -o -name "*.hpp" | xargs clang-format -i
   check_program_compilation:
     name: Check Program Compilation
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    needs: auto_format
     steps:
       - name: Checkout GH repository
         uses: actions/checkout@v4
