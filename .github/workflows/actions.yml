@@ -18,12 +18,12 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install Clang-Format
-        run: sudo apt-get install -y clang-format
+      - name: Install Astyle
+        run: sudo apt-get install -y astyle
 
-      - name: Run Clang-Format
+      - name: Run Astyle
         run: |
-          find . -name "*.cpp" -o -name "*.hpp" | xargs clang-format -i
+          find . -name "*.cpp" -o -name "*.hpp" | xargs astyle --style=allman
 
   check_program_compilation:
     name: Check Program Compilation
