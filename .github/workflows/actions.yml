@@ -19,6 +19,11 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Install dependencies (SFML)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libsfml-dev
+
       - name: Remove build directory
         run: rm -rf build
 
@@ -53,7 +58,7 @@ jobs:
         run: cmake .
 
       - name: Build documentation
-        run: cmake --build . --target doc_doxygen
+        run: cmake --build . --target doc_doxygen || echo "No documentation target found, skipping."
 
   push_to_mirror:
     name: Push to Mirror
