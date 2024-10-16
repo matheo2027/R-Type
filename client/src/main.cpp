@@ -56,6 +56,6 @@ int main()
 
         start = now;
     }
-    
+
     return 0;
 }
