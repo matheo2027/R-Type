@@ -1,5 +1,5 @@
-name: CI Pipeline
-run-name: ${{ github.actor }} CI Pipeline
+name: action
+run-name: ${{ github.actor }} asking for main action
 on:
   push:
     branches-ignore:
