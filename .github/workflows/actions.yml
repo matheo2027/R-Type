@@ -1,5 +1,6 @@
 name: action
 run-name: ${{ github.actor }} asking for main action
+
 on:
   push:
     branches-ignore:
@@ -45,7 +46,8 @@ jobs:
         run: rm -rf build
 
       - name: Generate build files
-        run: cmake -S . -B build
+        run: |
+          cmake -S . -B build -DSFML_DIR=/usr/lib/x86_64-linux-gnu/cmake/SFML
 
       - name: Compile project
         run: cmake --build build -- -j $(nproc --all)
