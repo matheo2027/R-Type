@@ -33,6 +33,7 @@ A list of technologies used within the project:
 ***
 A little intro about the installation.
 Don't forgot to ```chmod +x``` all the .sh files.
+Before any push please make sure the code is formatted properly with ```Astyle```.
 
 ```bash
 git clone git@github.com:matheo2027/R-Type.git
