@@ -47,7 +47,7 @@ jobs:
 
       - name: Generate build files
         run: |
-          cmake -S . -B build -DSFML_DIR=/usr/lib/x86_64-linux-gnu/cmake/SFML
+          cmake -S . -B build -DCMAKE_PREFIX_PATH="/usr/lib/x86_64-linux-gnu/cmake/SFML"
 
       - name: Compile project
         run: cmake --build build -- -j $(nproc --all)
