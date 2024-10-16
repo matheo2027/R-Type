@@ -1,6 +1,5 @@
 name: action
 run-name: ${{ github.actor }} asking for main action
-
 on:
   push:
     branches-ignore:
@@ -10,27 +9,10 @@ on:
       - "ga-ignore-*"
 
 jobs:
-  auto_format:
-    name: Auto Format Code
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout GH repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Install Astyle
-        run: sudo apt-get install -y astyle
-
-      - name: Run Astyle
-        run: |
-          find . -name "*.cpp" -o -name "*.hpp" | xargs astyle --style=allman
-
   check_program_compilation:
     name: Check Program Compilation
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    needs: auto_format
     steps:
       - name: Checkout GH repository
         uses: actions/checkout@v4
@@ -41,13 +23,11 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y libsfml-dev
-
       - name: Remove build directory
         run: rm -rf build
 
       - name: Generate build files
-        run: |
-          cmake -S . -B build -DSFML_DIR="/usr/lib/x86_64-linux-gnu/cmake/SFML"
+        run: cmake -S . -B build
 
       - name: Compile project
         run: cmake --build build -- -j $(nproc --all)
@@ -60,7 +40,6 @@ jobs:
                 exit 1
             fi
           done
-
   check_doc_build:
     name: Check Documentation Build
     runs-on: ubuntu-latest
