@@ -13,7 +13,7 @@ target_link_libraries(rtype sfml-graphics sfml-window sfml-system)
 
 
 
-# CMakeLists.txt
+# Doxygen
 
 find_package(Doxygen)
 
