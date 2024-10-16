@@ -1,9 +1,16 @@
 #include "../include/Client.hpp"
 #include <iostream>
 
-Client::Client() {
+Client::Client(int port) {
+    if (socket.bind(port) != sf::Socket::Done) {
+        std::cerr << "Erreur lors de la liaison du socket au port " << port << std::endl;
+        exit(1);
+    }
+    std::cout << "Le client écoute sur le port " << port << "..." << std::endl;
 
 }
+
+
 
 void Client::send(const std::vector<char>& message, const sf::IpAddress& recipient, unsigned short port) {
     if (socket.send(message.data(), message.size(), recipient, port) != sf::Socket::Done) {

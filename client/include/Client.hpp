@@ -5,7 +5,9 @@
 
 class Client : public IClient {
 public:
-    Client();
+    Client(int port);
+    
+
     void send(const std::vector<char>& message, const sf::IpAddress& recipient, unsigned short port) override;
     void receive() override;
 
