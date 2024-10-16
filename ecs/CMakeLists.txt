@@ -6,10 +6,9 @@ file(GLOB_RECURSE SOURCES src/*.cpp)
 
 add_library(${PROJECT_NAME} STATIC ${SOURCES})
 
-# Spécifier le chemin de SFML si nécessaire
-set(CMAKE_PREFIX_PATH "/usr/lib/x86_64-linux-gnu/cmake/SFML")
+# Chemin où se trouve SFMLConfig.cmake
+set(SFML_DIR "/usr/lib/x86_64-linux-gnu/cmake/SFML")
 
-# Rechercher le package SFML
 find_package(SFML 2.5 COMPONENTS graphics system window REQUIRED)
 
 target_include_directories(${PROJECT_NAME} PUBLIC include)
