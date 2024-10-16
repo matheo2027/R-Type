@@ -4,6 +4,7 @@ project(r-type)
 
 add_subdirectory(ecs)
 add_subdirectory(client)
+
 # Doxygen
 
 find_package(Doxygen)
