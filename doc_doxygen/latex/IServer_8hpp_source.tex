@@ -1,0 +1,20 @@
+\doxysection{IServer.\+hpp}
+\hypertarget{IServer_8hpp_source}{}\label{IServer_8hpp_source}\index{/home/matheopqs/tech3/R-\/Type/server/include/IServer.hpp@{/home/matheopqs/tech3/R-\/Type/server/include/IServer.hpp}}
+\mbox{\hyperlink{IServer_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ ISERVER\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ ISERVER\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <SFML/Network.hpp>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIServer}{IServer}}\ \{}
+\DoxyCodeLine{00008\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classIServer_a255cd05883cb2f4c64f0ae2a49c7f743}{\string~IServer}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIServer_a37c4f136f13e209f9f0728c8234b28d2}{send}}(\textcolor{keyword}{const}\ std::vector<char>\&\ message,\ \textcolor{keyword}{const}\ sf::IpAddress\&\ recipient,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ port)\ =\ 0;}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIServer_a5d12bbb44aaaddf5cf54fea7b7f34947}{receive}}()\ =\ 0;}
+\DoxyCodeLine{00012\ \};}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ ISERVER\_HPP}}
+
+\end{DoxyCode}

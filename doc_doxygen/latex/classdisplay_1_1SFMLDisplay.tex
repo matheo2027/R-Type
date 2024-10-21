@@ -1,0 +1,196 @@
+\doxysection{display\+::SFMLDisplay Class Reference}
+\hypertarget{classdisplay_1_1SFMLDisplay}{}\label{classdisplay_1_1SFMLDisplay}\index{display::SFMLDisplay@{display::SFMLDisplay}}
+
+
+{\ttfamily \#include $<$SFMLDisplay.\+hpp$>$}
+
+Inheritance diagram for display\+::SFMLDisplay\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classdisplay_1_1SFMLDisplay}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classdisplay_1_1SFMLDisplay_acfdb9c05fadc9594abaad1ea336d0617}{SFMLDisplay}} ()
+\item 
+\mbox{\hyperlink{classdisplay_1_1SFMLDisplay_a4390ecb6c6de18878dcf7bb1e6040aa5}{\texorpdfstring{$\sim$}{\string~}\+SFMLDisplay}} () override
+\item 
+void \mbox{\hyperlink{classdisplay_1_1SFMLDisplay_afac221290323e9fa8e8d4f4afb1d181b}{init}} (int width, int height, const std\+::string \&title) override
+\item 
+void \mbox{\hyperlink{classdisplay_1_1SFMLDisplay_a08550ee9b4501c6ca6d4d824d4825e96}{update}} () override
+\item 
+void \mbox{\hyperlink{classdisplay_1_1SFMLDisplay_a24159a7cea40db2489026dd988ffb8b2}{clear}} () override
+\item 
+bool \mbox{\hyperlink{classdisplay_1_1SFMLDisplay_a7146c58f35b1e5099bf996582698d921}{is\+Open}} () const override
+\item 
+void \mbox{\hyperlink{classdisplay_1_1SFMLDisplay_a0a0594fbf27860145bd2eae958a4726c}{close}} () override
+\item 
+void \mbox{\hyperlink{classdisplay_1_1SFMLDisplay_a22620e39234a9634377f8d418b650869}{draw}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structdisplay_1_1ITexture}{ITexture}} $>$ \&texture, float x, float y) override
+\item 
+bool \mbox{\hyperlink{classdisplay_1_1SFMLDisplay_a64c20e2738184e5869563f880c481df5}{is\+Key\+Pressed}} (\mbox{\hyperlink{namespacedisplay_a7a2f3dfe993add55ee8eb97674bee22b}{Key}} key) const override
+\item 
+bool \mbox{\hyperlink{classdisplay_1_1SFMLDisplay_ac16a804704810e6a2a43c3bbbfbc7c68}{is\+Key\+Released}} (\mbox{\hyperlink{namespacedisplay_a7a2f3dfe993add55ee8eb97674bee22b}{Key}} key) const override
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structdisplay_1_1ITexture}{ITexture}} $>$ \mbox{\hyperlink{classdisplay_1_1SFMLDisplay_a5bedae560388f371c2b766e875e74ca1}{create\+Texture}} (const std\+::string \&path)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classdisplay_1_1IDisplay}{display\+::\+IDisplay}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classdisplay_1_1IDisplay_add88d246dbf2238ee7c447555aa57ace}{\texorpdfstring{$\sim$}{\string~}\+IDisplay}} ()=default
+\item 
+virtual void \mbox{\hyperlink{classdisplay_1_1IDisplay_a104e83df474c3271b14dd45e889b2451}{init}} (int width, int height, const std\+::string \&title)=0
+\item 
+virtual void \mbox{\hyperlink{classdisplay_1_1IDisplay_a67adde9d6dda336441267db8de29cd2a}{update}} ()=0
+\item 
+virtual void \mbox{\hyperlink{classdisplay_1_1IDisplay_a06e75b5f19ac4f8eadfbb0606ddf43af}{clear}} ()=0
+\item 
+virtual bool \mbox{\hyperlink{classdisplay_1_1IDisplay_a4b7189cb052c857a4806ea21003c5bf7}{is\+Open}} () const =0
+\item 
+virtual void \mbox{\hyperlink{classdisplay_1_1IDisplay_acd073f71f405bccc0afaa6a010f46168}{close}} ()=0
+\item 
+virtual void \mbox{\hyperlink{classdisplay_1_1IDisplay_afcd85a572d2dfe968a5eca2ef3ffbb33}{draw}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structdisplay_1_1ITexture}{ITexture}} $>$ \&texture, float x, float y)=0
+\item 
+virtual bool \mbox{\hyperlink{classdisplay_1_1IDisplay_ab823694c0e8a71561353bbdad93eb102}{is\+Key\+Pressed}} (\mbox{\hyperlink{namespacedisplay_a7a2f3dfe993add55ee8eb97674bee22b}{Key}} key) const =0
+\item 
+virtual bool \mbox{\hyperlink{classdisplay_1_1IDisplay_a4fda6a8a6477caa1fe4a77cdb900b09e}{is\+Key\+Released}} (\mbox{\hyperlink{namespacedisplay_a7a2f3dfe993add55ee8eb97674bee22b}{Key}} key) const =0
+\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structdisplay_1_1ITexture}{ITexture}} $>$ \mbox{\hyperlink{classdisplay_1_1IDisplay_a03961f444f0134b97601362d1e0d79a7}{create\+Texture}} (const std\+::string \&path)=0
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ sf\+::\+Keyboard\+::\+Key $>$ \mbox{\hyperlink{classdisplay_1_1SFMLDisplay_a73b4ec0923a6e903b79ba810e53c0348}{m\+\_\+keys}}
+\item 
+sf\+::\+Render\+Window \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classdisplay_1_1SFMLDisplay_aaa4eb6e381485c30527e73f1f7c85664}{m\+\_\+window}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classdisplay_1_1SFMLDisplay_acfdb9c05fadc9594abaad1ea336d0617}\label{classdisplay_1_1SFMLDisplay_acfdb9c05fadc9594abaad1ea336d0617} 
+\index{display::SFMLDisplay@{display::SFMLDisplay}!SFMLDisplay@{SFMLDisplay}}
+\index{SFMLDisplay@{SFMLDisplay}!display::SFMLDisplay@{display::SFMLDisplay}}
+\doxysubsubsection{\texorpdfstring{SFMLDisplay()}{SFMLDisplay()}}
+{\footnotesize\ttfamily display\+::\+SFMLDisplay\+::\+SFMLDisplay (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classdisplay_1_1SFMLDisplay_a4390ecb6c6de18878dcf7bb1e6040aa5}\label{classdisplay_1_1SFMLDisplay_a4390ecb6c6de18878dcf7bb1e6040aa5} 
+\index{display::SFMLDisplay@{display::SFMLDisplay}!````~SFMLDisplay@{\texorpdfstring{$\sim$}{\string~}SFMLDisplay}}
+\index{````~SFMLDisplay@{\texorpdfstring{$\sim$}{\string~}SFMLDisplay}!display::SFMLDisplay@{display::SFMLDisplay}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}SFMLDisplay()}{\string~SFMLDisplay()}}
+{\footnotesize\ttfamily display\+::\+SFMLDisplay\+::\texorpdfstring{$\sim$}{\string~}\+SFMLDisplay (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classdisplay_1_1SFMLDisplay_a24159a7cea40db2489026dd988ffb8b2}\label{classdisplay_1_1SFMLDisplay_a24159a7cea40db2489026dd988ffb8b2} 
+\index{display::SFMLDisplay@{display::SFMLDisplay}!clear@{clear}}
+\index{clear@{clear}!display::SFMLDisplay@{display::SFMLDisplay}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void display\+::\+SFMLDisplay\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classdisplay_1_1IDisplay_a06e75b5f19ac4f8eadfbb0606ddf43af}{display\+::\+IDisplay}}.
+
+\Hypertarget{classdisplay_1_1SFMLDisplay_a0a0594fbf27860145bd2eae958a4726c}\label{classdisplay_1_1SFMLDisplay_a0a0594fbf27860145bd2eae958a4726c} 
+\index{display::SFMLDisplay@{display::SFMLDisplay}!close@{close}}
+\index{close@{close}!display::SFMLDisplay@{display::SFMLDisplay}}
+\doxysubsubsection{\texorpdfstring{close()}{close()}}
+{\footnotesize\ttfamily void display\+::\+SFMLDisplay\+::close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classdisplay_1_1IDisplay_acd073f71f405bccc0afaa6a010f46168}{display\+::\+IDisplay}}.
+
+\Hypertarget{classdisplay_1_1SFMLDisplay_a5bedae560388f371c2b766e875e74ca1}\label{classdisplay_1_1SFMLDisplay_a5bedae560388f371c2b766e875e74ca1} 
+\index{display::SFMLDisplay@{display::SFMLDisplay}!createTexture@{createTexture}}
+\index{createTexture@{createTexture}!display::SFMLDisplay@{display::SFMLDisplay}}
+\doxysubsubsection{\texorpdfstring{createTexture()}{createTexture()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structdisplay_1_1ITexture}{ITexture}} $>$ display\+::\+SFMLDisplay\+::create\+Texture (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classdisplay_1_1IDisplay_a03961f444f0134b97601362d1e0d79a7}{display\+::\+IDisplay}}.
+
+\Hypertarget{classdisplay_1_1SFMLDisplay_a22620e39234a9634377f8d418b650869}\label{classdisplay_1_1SFMLDisplay_a22620e39234a9634377f8d418b650869} 
+\index{display::SFMLDisplay@{display::SFMLDisplay}!draw@{draw}}
+\index{draw@{draw}!display::SFMLDisplay@{display::SFMLDisplay}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void display\+::\+SFMLDisplay\+::draw (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structdisplay_1_1ITexture}{ITexture}} $>$ \&}]{texture,  }\item[{float}]{x,  }\item[{float}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classdisplay_1_1IDisplay_afcd85a572d2dfe968a5eca2ef3ffbb33}{display\+::\+IDisplay}}.
+
+\Hypertarget{classdisplay_1_1SFMLDisplay_afac221290323e9fa8e8d4f4afb1d181b}\label{classdisplay_1_1SFMLDisplay_afac221290323e9fa8e8d4f4afb1d181b} 
+\index{display::SFMLDisplay@{display::SFMLDisplay}!init@{init}}
+\index{init@{init}!display::SFMLDisplay@{display::SFMLDisplay}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void display\+::\+SFMLDisplay\+::init (\begin{DoxyParamCaption}\item[{int}]{width,  }\item[{int}]{height,  }\item[{const std\+::string \&}]{title }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classdisplay_1_1IDisplay_a104e83df474c3271b14dd45e889b2451}{display\+::\+IDisplay}}.
+
+\Hypertarget{classdisplay_1_1SFMLDisplay_a64c20e2738184e5869563f880c481df5}\label{classdisplay_1_1SFMLDisplay_a64c20e2738184e5869563f880c481df5} 
+\index{display::SFMLDisplay@{display::SFMLDisplay}!isKeyPressed@{isKeyPressed}}
+\index{isKeyPressed@{isKeyPressed}!display::SFMLDisplay@{display::SFMLDisplay}}
+\doxysubsubsection{\texorpdfstring{isKeyPressed()}{isKeyPressed()}}
+{\footnotesize\ttfamily bool display\+::\+SFMLDisplay\+::is\+Key\+Pressed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacedisplay_a7a2f3dfe993add55ee8eb97674bee22b}{Key}}}]{key }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classdisplay_1_1IDisplay_ab823694c0e8a71561353bbdad93eb102}{display\+::\+IDisplay}}.
+
+\Hypertarget{classdisplay_1_1SFMLDisplay_ac16a804704810e6a2a43c3bbbfbc7c68}\label{classdisplay_1_1SFMLDisplay_ac16a804704810e6a2a43c3bbbfbc7c68} 
+\index{display::SFMLDisplay@{display::SFMLDisplay}!isKeyReleased@{isKeyReleased}}
+\index{isKeyReleased@{isKeyReleased}!display::SFMLDisplay@{display::SFMLDisplay}}
+\doxysubsubsection{\texorpdfstring{isKeyReleased()}{isKeyReleased()}}
+{\footnotesize\ttfamily bool display\+::\+SFMLDisplay\+::is\+Key\+Released (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacedisplay_a7a2f3dfe993add55ee8eb97674bee22b}{Key}}}]{key }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classdisplay_1_1IDisplay_a4fda6a8a6477caa1fe4a77cdb900b09e}{display\+::\+IDisplay}}.
+
+\Hypertarget{classdisplay_1_1SFMLDisplay_a7146c58f35b1e5099bf996582698d921}\label{classdisplay_1_1SFMLDisplay_a7146c58f35b1e5099bf996582698d921} 
+\index{display::SFMLDisplay@{display::SFMLDisplay}!isOpen@{isOpen}}
+\index{isOpen@{isOpen}!display::SFMLDisplay@{display::SFMLDisplay}}
+\doxysubsubsection{\texorpdfstring{isOpen()}{isOpen()}}
+{\footnotesize\ttfamily bool display\+::\+SFMLDisplay\+::is\+Open (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classdisplay_1_1IDisplay_a4b7189cb052c857a4806ea21003c5bf7}{display\+::\+IDisplay}}.
+
+\Hypertarget{classdisplay_1_1SFMLDisplay_a08550ee9b4501c6ca6d4d824d4825e96}\label{classdisplay_1_1SFMLDisplay_a08550ee9b4501c6ca6d4d824d4825e96} 
+\index{display::SFMLDisplay@{display::SFMLDisplay}!update@{update}}
+\index{update@{update}!display::SFMLDisplay@{display::SFMLDisplay}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void display\+::\+SFMLDisplay\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classdisplay_1_1IDisplay_a67adde9d6dda336441267db8de29cd2a}{display\+::\+IDisplay}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classdisplay_1_1SFMLDisplay_a73b4ec0923a6e903b79ba810e53c0348}\label{classdisplay_1_1SFMLDisplay_a73b4ec0923a6e903b79ba810e53c0348} 
+\index{display::SFMLDisplay@{display::SFMLDisplay}!m\_keys@{m\_keys}}
+\index{m\_keys@{m\_keys}!display::SFMLDisplay@{display::SFMLDisplay}}
+\doxysubsubsection{\texorpdfstring{m\_keys}{m\_keys}}
+{\footnotesize\ttfamily std\+::vector$<$sf\+::\+Keyboard\+::\+Key$>$ display\+::\+SFMLDisplay\+::m\+\_\+keys\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classdisplay_1_1SFMLDisplay_aaa4eb6e381485c30527e73f1f7c85664}\label{classdisplay_1_1SFMLDisplay_aaa4eb6e381485c30527e73f1f7c85664} 
+\index{display::SFMLDisplay@{display::SFMLDisplay}!m\_window@{m\_window}}
+\index{m\_window@{m\_window}!display::SFMLDisplay@{display::SFMLDisplay}}
+\doxysubsubsection{\texorpdfstring{m\_window}{m\_window}}
+{\footnotesize\ttfamily sf\+::\+Render\+Window\texorpdfstring{$\ast$}{*} display\+::\+SFMLDisplay\+::m\+\_\+window\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/matheopqs/tech3/\+R-\/\+Type/ecs/include/display/\mbox{\hyperlink{SFMLDisplay_8hpp}{SFMLDisplay.\+hpp}}\item 
+/home/matheopqs/tech3/\+R-\/\+Type/ecs/src/display/\mbox{\hyperlink{SFMLDisplay_8cpp}{SFMLDisplay.\+cpp}}\end{DoxyCompactItemize}
