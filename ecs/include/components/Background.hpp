@@ -7,9 +7,9 @@
 namespace component
 {
 
-struct Background : public ecs::Component
-{
-
+struct Background : public Component{
 };
 
 }
+
+#endif // BACKGROUND_HPP
