@@ -4,7 +4,8 @@
 #include <SFML/Network.hpp>
 #include <vector>
 
-class IServer {
+class IServer
+{
 public:
     virtual ~IServer() = default;
     virtual void send(const std::vector<char>& message, const sf::IpAddress& recipient, unsigned short port) = 0;

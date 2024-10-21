@@ -3,7 +3,8 @@
 
 #include "IServer.hpp"
 
-class Server : public IServer {
+class Server : public IServer
+{
 public:
     Server(unsigned short port);
     void send(const std::vector<char>& message, const sf::IpAddress& recipient, unsigned short port) override;
