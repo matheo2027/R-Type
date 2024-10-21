@@ -32,8 +32,23 @@ A list of technologies used within the project:
 
 ***
 A little intro about the installation.
-Don't forgot to ```chmod +x``` all the .sh files.
-Before any push please make sure the code is formatted properly with ```Astyle```.
+
+Installation of dependencies is required:
+
+Install Auto Format Code:
+
+```bash
+sudo sudo apt-get install -y astyle
+```
+
+Install SFML library:
+
+```bash
+sudo apt-get update
+sudo apt-get install -y libsfml-dev
+```
+
+Clone and start the project:
 
 ```bash
 git clone git@github.com:matheo2027/R-Type.git
@@ -47,7 +62,12 @@ cd ./R-Type
 
 # If you want to delete all the documentation files and stop the project :
 ./StopAll.sh
+
+cd build
+./client/r-type_client
 ```
+Don't forgot to ```chmod +x``` all the .sh files.
+Before any push please make sure the code is formatted properly with ```Astyle```.
 
 ### Overview
 
