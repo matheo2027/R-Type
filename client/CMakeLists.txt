@@ -4,6 +4,8 @@ project(r-type_client)
 
 file(GLOB_RECURSE SOURCES src/*.cpp)
 
+list(FILTER SOURCES EXCLUDE REGEX "\\.css$")
+
 include_directories(include)
 
 link_directories($(CMAKE_BINARY_DIR)/ecs)

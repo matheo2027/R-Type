@@ -4,6 +4,8 @@ project(r-type_ecs)
 
 file(GLOB_RECURSE SOURCES src/*.cpp)
 
+list(FILTER SOURCES EXCLUDE REGEX "\\.css$")
+
 add_library(${PROJECT_NAME} STATIC ${SOURCES})
 
 find_package(SFML 2.5 COMPONENTS graphics system window REQUIRED)
