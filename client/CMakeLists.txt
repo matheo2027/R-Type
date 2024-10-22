@@ -8,7 +8,7 @@ list(FILTER SOURCES EXCLUDE REGEX "\\.css$")
 
 include_directories(include)
 
-link_directories($(CMAKE_BINARY_DIR)/ecs)
+link_directories(${CMAKE_BINARY_DIR}/ecs)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 target_link_libraries(${PROJECT_NAME} r-type_ecs)
