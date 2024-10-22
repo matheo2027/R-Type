@@ -54,7 +54,7 @@ Clone and start the project:
 git clone git@github.com:matheo2027/R-Type.git
 cd ./R-Type
 
-# If you want to start the project :
+# If you want to compile the project :
 ./start.sh
 
 # If you want to create the documentation :
