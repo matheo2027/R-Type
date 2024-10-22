@@ -38,7 +38,7 @@ Installation of dependencies is required:
 Install Auto Format Code:
 
 ```bash
-sudo sudo apt-get install -y astyle
+sudo apt-get install -y astyle
 ```
 
 Install SFML library:
