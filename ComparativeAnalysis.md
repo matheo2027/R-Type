@@ -64,4 +64,4 @@ Each library has its strengths and weaknesses:
 - **Allegro** is similar to SDL but slightly simpler in some respects, offering a good balance between performance and ease of use.
 - **Raylib** is the most beginner-friendly, but its performance may not be as strong in larger projects.
 
-For the **R-Type** project, given the C++ constraint and the need for high performance, **SFML** remains a strong choice. However, SDL or Allegro could also be viable alternatives if more multimedia or platform support is needed.
+For the **R-Type** project, given the constraints of using C++ and the need for high performance, **SFML** stands out as an ideal choice. Our familiarity with this graphics library, combined with the server's use of **SFML sockets**, solidified our decision to use it.
