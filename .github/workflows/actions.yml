@@ -85,7 +85,7 @@ jobs:
   generate_docs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    needs: check_doc_build
+    needs: [ check_doc_build, check_program_compilation ]
     permissions:
       contents: write
 
@@ -151,10 +151,13 @@ jobs:
             echo "No documentation generated. Skipping deployment."
           fi
 
+
+
+
   push_to_mirror:
     name: Push to Mirror
     runs-on: ubuntu-latest
-    needs: [check_program_compilation, check_doc_build]
+    needs: [check_program_compilation, check_doc_build, generate_docs]
     if: github.event_name == 'push' && needs.check_program_compilation.result == 'success' && needs.check_doc_build.result == 'success' && needs.generate_docs.result == 'success'
     steps:
       - name: Checkout GH repository
