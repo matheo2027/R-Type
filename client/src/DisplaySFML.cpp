@@ -1,77 +1,86 @@
-#include "DisplaySFML.hpp"
-#include <iostream>
+/**
+ * @file DisplaySFML.hpp
+ * @brief Header file for the DisplaySFML class, which handles rendering using SFML.
+ */
 
+#ifndef DISPLAY_SFML_HPP
+#define DISPLAY_SFML_HPP
+
+#include <SFML/Graphics.hpp>
+#include "IDisplay.hpp"
+
+/**
+ * @namespace gfx
+ * @brief The namespace for the graphics-related classes.
+ */
 namespace gfx
 {
-DisplaySFML::DisplaySFML(u32 width, u32 height, std::string &title)
-    : IDisplay(width, height, title),
-      m_window(sf::VideoMode(width, height), title) {}
-
-void DisplaySFML::update()
-{
-    m_window.display();
-}
-
-void DisplaySFML::clear()
-{
-    m_window.clear();
-}
-
-bool DisplaySFML::isRunning() const
-{
-    return m_window.isOpen();
-}
-
-void DisplaySFML::close()
-{
-    m_window.close();
-}
-
-void DisplaySFML::draw(const ITexture &texture, u32 x, u32 y)
-{
-    sf::Texture sfTexture;
-    if (!sfTexture.loadFromFile(texture.getPath().string()))
-        return;
-
-    sf::Sprite sprite(sfTexture);
-    sprite.setPosition(static_cast<float>(x), static_cast<float>(y));
-    m_window.draw(sprite);
-}
-
-void DisplaySFML::draw(const std::string &text, u32 x, u32 y)
-{
-    sf::Font font;
-    if (!font.loadFromFile("assets/ArialMT.ttf"))
-        return;
-
-    sf::Text sfText;
-    sfText.setFont(font);
-    sfText.setString(text);
-    sfText.setPosition(static_cast<float>(x), static_cast<float>(y));
-    sfText.setCharacterSize(24);
-    sfText.setFillColor(sf::Color::White);
-
-    m_window.draw(sfText);
-}
-
-bool DisplaySFML::getKeyDown(u8 key) const
-{
-    switch (key)
+    /**
+     * @class DisplaySFML
+     * @brief A class that implements the IDisplay interface using the SFML library for rendering graphics.
+     *
+     * This class manages the creation and handling of an SFML window, including drawing textures and text,
+     * and handling input events.
+     */
+    class DisplaySFML : public IDisplay
     {
-    case K_UP:
-        return sf::Keyboard::isKeyPressed(sf::Keyboard::Up);
-    case K_DOWN:
-        return sf::Keyboard::isKeyPressed(sf::Keyboard::Down);
-    case K_LEFT:
-        return sf::Keyboard::isKeyPressed(sf::Keyboard::Left);
-    case K_RIGHT:
-        return sf::Keyboard::isKeyPressed(sf::Keyboard::Right);
-    case K_SPACE:
-        return sf::Keyboard::isKeyPressed(sf::Keyboard::Space);
-    case K_ESC:
-        return sf::Keyboard::isKeyPressed(sf::Keyboard::Escape);
-    default:
-        return false;
-    }
-}
+    public:
+        /**
+         * @brief Constructs a DisplaySFML object.
+         * @param width The width of the window.
+         * @param height The height of the window.
+         * @param title The title of the window.
+         */
+        DisplaySFML(u32 width, u32 height, std::string &title);
+
+        /**
+         * @brief Updates the window display.
+         */
+        void update() override;
+
+        /**
+         * @brief Clears the window.
+         */
+        void clear() override;
+
+        /**
+         * @brief Checks if the window is currently open.
+         * @return True if the window is open, false otherwise.
+         */
+        bool isRunning() const override;
+
+        /**
+         * @brief Closes the window.
+         */
+        void close() override;
+
+        /**
+         * @brief Draws a texture at the specified position.
+         * @param texture The texture to draw.
+         * @param x The x-coordinate for the position.
+         * @param y The y-coordinate for the position.
+         */
+        void draw(const ITexture &texture, u32 x, u32 y) override;
+
+        /**
+         * @brief Draws text at the specified position.
+         * @param text The text to draw.
+         * @param x The x-coordinate for the position.
+         * @param y The y-coordinate for the position.
+         */
+        void draw(const std::string &text, u32 x, u32 y) override;
+
+        /**
+         * @brief Checks if a specific key is pressed.
+         * @param key The key to check, represented by its constant value.
+         * @return True if the key is pressed, false otherwise.
+         */
+        bool getKeyDown(u8 key) const override;
+
+    private:
+        sf::RenderWindow m_window; ///< The SFML window object.
+    };
+
 } // namespace gfx
+
+#endif // DISPLAY_SFML_HPP
