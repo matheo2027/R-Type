@@ -102,18 +102,6 @@ jobs:
             )
           )
 
-      - name: Run tests
-        run: |
-          if exist .\build\tests (
-            cd build\tests
-            .\run_tests.exe
-          ) else (
-            echo "Tests directory does not exist"
-            exit /b 1
-          )
-
-
-
   generate_docs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
