@@ -1,76 +1,116 @@
-#include "display/SFMLDisplay.hpp"
-#include <iostream>
+/**
+ * @file SFMLDisplay.hpp
+ * @brief A class for managing display using SFML (Simple and Fast Multimedia Library).
+ *
+ * This class handles the creation of a render window, event management,
+ * drawing textures, and handling keyboard input for the display.
+ */
 
-namespace display
-{
+#ifndef SFML_DISPLAY_HPP
+#define SFML_DISPLAY_HPP
 
-SFMLDisplay::SFMLDisplay()
-{
-    m_keys.push_back(sf::Keyboard::Key::Up);
-    m_keys.push_back(sf::Keyboard::Key::Down);
-    m_keys.push_back(sf::Keyboard::Key::Left);
-    m_keys.push_back(sf::Keyboard::Key::Right);
-    m_keys.push_back(sf::Keyboard::Key::Space);
-}
+#include <SFML/Graphics.hpp>
+#include <vector>
+#include <memory>
+#include "ITexture.hpp"
 
-SFMLDisplay::~SFMLDisplay()
-{
-    delete m_window;
-}
+namespace display {
 
-void SFMLDisplay::init(int width, int height, const std::string &title)
-{
-    m_window = new sf::RenderWindow(sf::VideoMode(width, height), title);
-}
+/**
+ * @class SFMLDisplay
+ * @brief Manages the SFML rendering window and input.
+ *
+ * The SFMLDisplay class provides methods for initializing the display,
+ * updating the window, clearing the window, drawing textures, and
+ * checking keyboard input.
+ */
+class SFMLDisplay {
+public:
+    /**
+     * @brief Constructs an SFMLDisplay object.
+     *
+     * Initializes the key bindings for keyboard input.
+     */
+    SFMLDisplay();
 
-void SFMLDisplay::update()
-{
-    sf::Event event;
-    while (m_window->pollEvent(event)) {
-        if (event.type == sf::Event::Closed) {
-            m_window->close();
-        }
-    }
-    m_window->display();
-}
+    /**
+     * @brief Destroys the SFMLDisplay object.
+     *
+     * Cleans up the resources used by the display.
+     */
+    ~SFMLDisplay();
 
-void SFMLDisplay::clear()
-{
-    m_window->clear();
-}
+    /**
+     * @brief Initializes the render window.
+     *
+     * @param width The width of the window.
+     * @param height The height of the window.
+     * @param title The title of the window.
+     */
+    void init(int width, int height, const std::string &title);
 
-bool SFMLDisplay::isOpen() const
-{
-    return m_window->isOpen();
-}
+    /**
+     * @brief Updates the display and processes events.
+     *
+     * Polls for events and updates the window.
+     */
+    void update();
 
-void SFMLDisplay::close()
-{
-    m_window->close();
-}
+    /**
+     * @brief Clears the window for rendering.
+     */
+    void clear();
 
-void SFMLDisplay::draw(std::shared_ptr<ITexture> &texture, float x, float y)
-{
-    auto &sfmlTexture = static_cast<SFMLTexture &>(*texture);
+    /**
+     * @brief Checks if the window is open.
+     *
+     * @return True if the window is open, false otherwise.
+     */
+    bool isOpen() const;
 
-    sfmlTexture.sprite.setPosition(x, y);
+    /**
+     * @brief Closes the render window.
+     */
+    void close();
 
-    m_window->draw(sfmlTexture.sprite);
-}
+    /**
+     * @brief Draws a texture at the specified position.
+     *
+     * @param texture A shared pointer to the texture to draw.
+     * @param x The x-coordinate for the texture position.
+     * @param y The y-coordinate for the texture position.
+     */
+    void draw(std::shared_ptr<ITexture> &texture, float x, float y);
 
-bool SFMLDisplay::isKeyPressed(Key key) const
-{
-    return sf::Keyboard::isKeyPressed(m_keys[key]);
-}
+    /**
+     * @brief Checks if a specific key is pressed.
+     *
+     * @param key The key to check.
+     * @return True if the key is pressed, false otherwise.
+     */
+    bool isKeyPressed(Key key) const;
 
-bool SFMLDisplay::isKeyReleased(Key key) const
-{
-    return !sf::Keyboard::isKeyPressed(m_keys[key]);
-}
+    /**
+     * @brief Checks if a specific key is released.
+     *
+     * @param key The key to check.
+     * @return True if the key is released, false otherwise.
+     */
+    bool isKeyReleased(Key key) const;
 
-std::shared_ptr<ITexture> SFMLDisplay::createTexture(const std::string &path)
-{
-    return std::make_shared<SFMLTexture>(path);
-}
+    /**
+     * @brief Creates a texture from a file path.
+     *
+     * @param path The file path of the texture.
+     * @return A shared pointer to the created texture.
+     */
+    std::shared_ptr<ITexture> createTexture(const std::string &path);
 
-}
+private:
+    sf::RenderWindow *m_window;  ///< Pointer to the SFML render window.
+    std::vector<sf::Keyboard::Key> m_keys;  ///< List of keys for input management.
+};
+
+} // namespace display
+
+#endif // SFML_DISPLAY_HPP
