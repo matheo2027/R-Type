@@ -1,50 +1,37 @@
 /**
- * @file SystemManager.hpp
- * @brief This file defines the SystemManager class for managing ECS (Entity-Component-System) systems.
+ * @file SystemManager.cpp
+ * @brief Implementation of the SystemManager class for managing ECS systems.
+ *
+ * This file contains the definition of the SystemManager class, which is responsible
+ * for updating all systems in the Entity-Component-System (ECS) architecture.
  */
 
-#ifndef SYSTEMMANAGER_HPP
-#define SYSTEMMANAGER_HPP
-
-#include <vector>
-#include <memory>
-#include "System.hpp"
+#include "SystemManager.hpp"
 
 namespace ecs
 {
 
 /**
- * @class SystemManager
- * @brief Manages a collection of systems in the ECS architecture.
+ * @brief Constructs a SystemManager instance.
  *
- * The SystemManager is responsible for updating all systems in the ECS framework
- * at each frame. It iterates through the list of systems and calls their update
- * methods with the time delta.
+ * This constructor initializes the SystemManager, preparing it to manage systems.
  */
-class SystemManager
+SystemManager::SystemManager()
 {
-public:
-    /**
-     * @brief Constructs a new SystemManager object.
-     *
-     * Initializes an empty SystemManager.
-     */
-    SystemManager();
+}
 
-    /**
-     * @brief Updates all registered systems.
-     *
-     * Calls the update method on each system in the systems vector.
-     *
-     * @param dt The time delta since the last update, used to synchronize system updates.
-     */
-    void update(float dt);
+/**
+ * @brief Updates all registered systems.
+ *
+ * This method iterates through all systems and calls their update function.
+ *
+ * @param dt The time step for the update, typically the frame time.
+ */
+void SystemManager::update(float dt)
+{
+    for (auto &system : systems) {
+        system->update(dt);
+    }
+}
 
-private:
-    /// A vector of unique pointers to the systems managed by this SystemManager.
-    std::vector<std::unique_ptr<System>> systems;
-};
-
-} // namespace ecs
-
-#endif // SYSTEMMANAGER_HPP
+}
