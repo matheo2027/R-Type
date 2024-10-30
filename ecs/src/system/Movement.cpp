@@ -1,14 +1,34 @@
+/**
+ * @file Movement.hpp
+ * @brief Contains the Movement system for updating entity positions based on their velocities.
+ */
+
 #include "systems/Movement.hpp"
 #include <iostream>
 
 namespace systems
 {
 
+/**
+ * @class Movement
+ * @brief The Movement class is responsible for updating the positions of entities based on their velocities.
+ *
+ * This system iterates through all entities managed by the EntityManager and updates their positions
+ * according to their velocity components. It assumes that each entity may have a Position and Velocity component.
+ */
 Movement::Movement(ecs::EntityManager &entityManager)
     : m_entityManager(entityManager)
 {
 }
 
+/**
+ * @brief Updates the positions of entities based on their velocities.
+ * @param dt The delta time (time since the last update) used to calculate the new position.
+ *
+ * This method loops through all entities in the EntityManager and checks for their Position and
+ * Velocity components. If both components are present, it updates the position of the entity
+ * using the velocity values multiplied by the delta time.
+ */
 void Movement::update(float dt)
 {
     for (unsigned int i = 0; i < m_entityManager.size(); i++) {
@@ -21,5 +41,5 @@ void Movement::update(float dt)
         }
     }
 }
-    
+
 }
