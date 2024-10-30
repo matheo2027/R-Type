@@ -88,10 +88,10 @@ jobs:
           }
 
       - name: Generate build files
-        run: cmake -S . -B build -DSFML_DIR=$env:SFML_DIR
+        run: cmake -S . -B build -DSFML_DIR=$env:SFML_DIR -DCMAKE_CXX_STANDARD=17
 
       - name: Compile project
-        run: cmake --build build -- /m || (echo "Compilation failed" && exit 1)
+        run: cmake --build build -- /m
 
       - name: Check executables
         run: |
