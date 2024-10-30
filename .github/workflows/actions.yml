@@ -97,7 +97,7 @@ jobs:
         id: cache-doxygen
         uses: actions/cache@v3
         with:
-          path: docs/html
+          path: doc_doygen/html
           key: ${{ runner.os }}-doxygen-${{ hashFiles('**/*.cpp', '**/*.h', 'Doxyfile') }}
           restore-keys: |
             ${{ runner.os }}-doxygen-
@@ -142,7 +142,7 @@ jobs:
             # add the file named index.html that is my docs folder in my real project at the root of the gh-pages branch
             cp docs/html/index.html .
 
-            cp -r docs/html/* .
+            cp -r doc_doxygen/html/* .
             touch .nojekyll  # Disable Jekyll to enable support for files and directories starting with underscore
             git add --all
             git commit -m "Deploy Doxygen documentation to GitHub Pages"
