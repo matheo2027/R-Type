@@ -3,65 +3,6 @@ cmake_minimum_required(VERSION 3.10)
 # Specify the project name
 project(r-type)
 
-# Check for C and C++ compilers
-if(NOT CMAKE_C_COMPILER)
-    message(STATUS "C compiler not found. Attempting to install...")
-
-    if(WIN32)
-        message(STATUS "Configuring for Windows")
-        # Command to install MinGW or similar
-        # Note: This would typically require user interaction,
-        #       hence it may not be fully automatic
-        execute_process(
-            COMMAND choco install mingw
-            RESULT_VARIABLE install_result
-            ERROR_VARIABLE install_error
-        )
-    elseif(UNIX)
-        message(STATUS "Configuring for Unix (Linux)")
-        # Command to install build-essential which includes gcc and g++
-        execute_process(
-            COMMAND sudo apt-get install -y build-essential
-            RESULT_VARIABLE install_result
-            ERROR_VARIABLE install_error
-        )
-    endif()
-
-    if(NOT install_result EQUAL 0)
-        message(FATAL_ERROR "Error installing C compiler: ${install_error}")
-    else()
-        message(STATUS "C compiler installed successfully.")
-    endif()
-endif()
-
-if(NOT CMAKE_CXX_COMPILER)
-    message(STATUS "C++ compiler not found. Attempting to install...")
-
-    if(WIN32)
-        message(STATUS "Configuring for Windows")
-        # Command to install MinGW or similar
-        execute_process(
-            COMMAND choco install mingw
-            RESULT_VARIABLE install_result
-            ERROR_VARIABLE install_error
-        )
-    elseif(UNIX)
-        message(STATUS "Configuring for Unix (Linux)")
-        # Command to install build-essential which includes gcc and g++
-        execute_process(
-            COMMAND sudo apt-get install -y build-essential
-            RESULT_VARIABLE install_result
-            ERROR_VARIABLE install_error
-        )
-    endif()
-
-    if(NOT install_result EQUAL 0)
-        message(FATAL_ERROR "Error installing C++ compiler: ${install_error}")
-    else()
-        message(STATUS "C++ compiler installed successfully.")
-    endif()
-endif()
-
 # Platform-specific configurations for SFML
 if(WIN32)
     message(STATUS "Configuring for Windows")
@@ -104,7 +45,7 @@ elseif(UNIX)
 
         # Install SFML on Ubuntu
         execute_process(
-            COMMAND sudo apt-get install -y libsfml-dev
+            COMMAND sudo dnf install -y SFML-devel
             RESULT_VARIABLE install_result
             ERROR_VARIABLE install_error
         )
