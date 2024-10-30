@@ -9,21 +9,67 @@
 namespace systems
 {
 
+/**
+ * @class Player
+ * @brief A system responsible for handling player actions and interactions within the game.
+ *
+ * This class implements the ISystem interface and manages player input, movement,
+ * and shooting mechanics by interacting with the EntityManager and display system.
+ */
 class Player : public ISystem
 {
     public:
+        /**
+         * @brief Constructs a Player system.
+         *
+         * @param entityManager Reference to the EntityManager to manage game entities.
+         * @param display Reference to the display system for rendering.
+         */
         Player(ecs::EntityManager &entityManager, display::IDisplay &display);
 
+        /**
+         * @brief Updates the player system for the current frame.
+         *
+         * This function is called once per frame and handles all player-related updates,
+         * including input processing and movement.
+         *
+         * @param dt Time elapsed since the last update in seconds.
+         */
         void update(float dt) override;
 
     private:
-        ecs::EntityManager &m_entityManager;
-        display::IDisplay &m_display;
+        ecs::EntityManager &m_entityManager; ///< Reference to the EntityManager for managing entities.
+        display::IDisplay &m_display; ///< Reference to the display system for rendering.
 
+        /**
+         * @brief Handles player input.
+         *
+         * This function processes player input and updates the corresponding player component.
+         *
+         * @param player Pointer to the Player component to update based on input.
+         */
         void playerInput(component::Player *player);
-        void playerMovement(component::Player *player, component::Velocity *velocity);
-        void playerShoot(float dt, component::Player *player, component::Position *position);
 
+        /**
+         * @brief Handles player movement.
+         *
+         * This function updates the player's position based on the current velocity.
+         *
+         * @param player Pointer to the Player component.
+         * @param velocity Pointer to the Velocity component affecting the player's movement.
+         */
+        void playerMovement(component::Player *player, component::Velocity *velocity);
+
+        /**
+         * @brief Handles player shooting mechanics.
+         *
+         * This function processes shooting actions and updates the player's position accordingly.
+         *
+         * @param dt Time elapsed since the last update in seconds.
+         * @param player Pointer to the Player component.
+         * @param position Pointer to the Position component of the player.
+         */
+        void playerShoot(float dt, component::Player *player, component::Position *position);
 };
 
 }
