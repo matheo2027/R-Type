@@ -139,7 +139,7 @@ jobs:
           git config --global user.email "actions@github.com"
           git fetch origin
           git switch --orphan gh-pages || git checkout gh-pages
-          rm -rf *  # Clean gh-pages branch before deployment
+          # rm -rf *  # Clean gh-pages branch before deployment
           if [ -d "docs/html" ] && [ "$(ls -A docs/html)" ]; then
             cp -r docs/html/* .  # Copy all HTML files to the root of gh-pages
             touch .nojekyll  # Disable Jekyll to support directories with underscores
