@@ -70,14 +70,22 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install dependencies (SFML)
-        run: choco install sfml
+      - name: Download and extract SFML
+        run: |
+          Invoke-WebRequest -Uri https://www.sfml-dev.org/files/SFML-2.5.1-windows-vc15-64-bit.zip -OutFile sfml.zip
+          Expand-Archive -Path sfml.zip -DestinationPath $env:GITHUB_WORKSPACE\sfml
+          Remove-Item -Force sfml.zip
+
+      - name: Set SFML environment variables
+        run: |
+          $env:SFML_DIR = "$env:GITHUB_WORKSPACE\sfml\SFML-2.5.1"
+          echo "SFML_DIR=$env:SFML_DIR" >> $env:GITHUB_ENV
 
       - name: Remove build directory
         run: rmdir /S /Q build
 
       - name: Generate build files
-        run: cmake -S . -B build
+        run: cmake -S . -B build -DSFML_DIR=$env:SFML_DIR
 
       - name: Compile project
         run: cmake --build build -- /m
@@ -90,6 +98,7 @@ jobs:
               exit /b 1
             )
           )
+        
 
   generate_docs:
     runs-on: ubuntu-latest
