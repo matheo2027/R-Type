@@ -8,12 +8,7 @@ list(FILTER SOURCES EXCLUDE REGEX "\\.css$")
 
 add_library(${PROJECT_NAME} STATIC ${SOURCES})
 
-# Vérification et inclusion de SFML
 find_package(SFML 2.5 COMPONENTS graphics system window REQUIRED)
-
-if(NOT SFML_FOUND)
-    message(FATAL_ERROR "SFML not found, please install it.")
-endif()
 
 target_include_directories(${PROJECT_NAME} PUBLIC include)
 

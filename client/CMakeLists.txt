@@ -11,6 +11,4 @@ include_directories(include)
 link_directories(${CMAKE_BINARY_DIR}/ecs)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
-
-# Lien avec la bibliothèque ECS
 target_link_libraries(${PROJECT_NAME} r-type_ecs)
