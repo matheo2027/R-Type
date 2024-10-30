@@ -4,23 +4,38 @@
 namespace systems
 {
 
-Render::Render(ecs::EntityManager &entityManager, display::IDisplay &display)
-    : m_entityManager(entityManager), m_display(display)
-{
-}
+/**
+ * @class Render
+ * @brief A system responsible for rendering entities on the display.
+ *
+ * The Render class iterates through all entities managed by the EntityManager,
+ * retrieves their position and texture components, and uses the provided display
+ * interface to draw the entities on the screen.
+ */
+class Render {
+public:
+    /**
+     * @brief Constructs a Render system.
+     *
+     * @param entityManager Reference to the EntityManager for managing entities.
+     * @param display Reference to the display interface for rendering.
+     */
+    Render(ecs::EntityManager &entityManager, display::IDisplay &display);
 
-void Render::update(float dt)
-{
-    (void)dt;
+    /**
+     * @brief Updates the rendering system.
+     *
+     * This method is called to render all entities on the display.
+     * It retrieves the position and texture components of each entity and
+     * draws them at the specified coordinates.
+     *
+     * @param dt The time delta since the last update (not used).
+     */
+    void update(float dt);
 
-    for (unsigned int i = 0; i < m_entityManager.size(); i++) {
-        auto position = m_entityManager.getComponent<component::Position>(i);
-        auto texture = m_entityManager.getComponent<component::Texture>(i);
+private:
+    ecs::EntityManager &m_entityManager; ///< Reference to the EntityManager.
+    display::IDisplay &m_display;         ///< Reference to the display interface.
+};
 
-        if (position && texture) {
-            m_display.draw(texture->texture, position->x, position->y);
-        }
-    }
-}
-
-}
+} // namespace systems
