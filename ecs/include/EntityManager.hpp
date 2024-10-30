@@ -1,11 +1,3 @@
-/**
- * @file EntityManager.hpp
- * @brief This file contains the definition of the EntityManager class, which manages components for entities in an ECS (Entity-Component-System) architecture.
- *
- * The EntityManager class allows for adding, retrieving, and removing components associated with entities.
- * It uses type indexing to store components and provides methods to manage entities efficiently.
- */
-
 #pragma once
 
 #include <vector>
@@ -29,74 +21,53 @@
 namespace ecs
 {
 
-/**
- * @class EntityManager
- * @brief Manages the components for entities in an ECS architecture.
- *
- * The EntityManager allows for the addition, retrieval, and removal of components associated with entities.
- * It handles the storage of components using type indexing and ensures efficient memory management.
- */
+
 class EntityManager
 {
     public:
-        /**
-         * @brief Constructs an EntityManager.
-         */
         EntityManager();
 
-        /**
-         * @brief Adds a component of type T to the specified entity.
-         *
-         * This method resizes the internal storage for components if necessary and constructs a new component using the provided arguments.
-         *
-         * @tparam T The type of the component to add.
-         * @tparam Args The types of the arguments used to construct the component.
-         * @param entity The entity to which the component will be added.
-         * @param args Arguments used to construct the component of type T.
-         */
         template <typename T, typename... Args>
-        void addComponent(Entity entity, Args&&... args);
+        void addComponent(Entity entity, Args&&... args)
+        {
+            auto &components = m_components[typeid(T)];
+            if (components.size() <= entity) {
+                components.resize(entity + 1);
+                m_size = entity + 1;
+            }
+            components[entity] = T(std::forward<Args>(args)...);
+        }
 
-        /**
-         * @brief Retrieves a component of type T associated with the specified entity.
-         *
-         * This method returns a pointer to the component if it exists, or nullptr if it does not.
-         *
-         * @tparam T The type of the component to retrieve.
-         * @param entity The entity from which the component will be retrieved.
-         * @return A pointer to the component of type T, or nullptr if it does not exist.
-         */
         template <typename T>
-        T* getComponent(Entity entity);
+        T* getComponent(Entity entity)
+        {
+            auto it = m_components.find(typeid(T));
+            if (it != m_components.end() && it->second.size() > entity) {
+                return std::any_cast<T>(&it->second[entity]);
+            }
+            return nullptr;
+        }
 
-        /**
-         * @brief Removes all components associated with the specified entity.
-         *
-         * This method resets all components for the given entity, effectively removing it from the system.
-         *
-         * @param entity The entity to remove.
-         */
-        void removeEntity(Entity entity);
+        void removeEntity(Entity entity)
+        {
+            for (auto &[type, components] : m_components) {
+                if (components.size() > entity) {
+                    components[entity].reset();
+                }
+            }
+        }
 
-        /**
-         * @brief Creates a new entity and returns its ID.
-         *
-         * The ID is unique and incremented for each new entity created.
-         *
-         * @return The ID of the newly created entity.
-         */
-        Entity createEntity();
+        Entity createEntity()
+        {
+            return m_size;
+        }
 
-        /**
-         * @brief Returns the total number of entities managed by the EntityManager.
-         *
-         * @return The number of entities.
-         */
-        unsigned int size() const;
+        unsigned int size() const { return m_size; }
 
     private:
-        std::unordered_map<std::type_index, std::vector<std::any>> m_components; ///< Map of components indexed by type.
-        int m_size = 0; ///< The total number of entities managed.
+        std::unordered_map<std::type_index, std::vector<std::any>> m_components;
+        int m_size = 0;
+
 };
 
-} // namespace ecs
+}
