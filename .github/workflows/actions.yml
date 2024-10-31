@@ -80,10 +80,9 @@ jobs:
           }
         
       - name: Update package database and install dependencies
-        shell: msys2 {0}
         run: |
-          pacman -Sy --noconfirm
-          pacman -S --noconfirm mingw-w64-x86_64-sfml mingw-w64-x86_64-toolchain
+          C:\msys64\usr\bin\bash.exe -c "pacman -Sy --noconfirm"
+          C:\msys64\usr\bin\bash.exe -c "pacman -S --noconfirm mingw-w64-x86_64-sfml mingw-w64-x86_64-toolchain"
         
       - name: Remove build directory if it exists
         run: |
@@ -105,7 +104,8 @@ jobs:
               exit /b 1
             )
           )
-
+        
+        
 
 
 
