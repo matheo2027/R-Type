@@ -1,4 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF) # Pour éviter d'utiliser les extensions spécifiques au compilateur
 
 # Specify the project name
 project(r-type)
