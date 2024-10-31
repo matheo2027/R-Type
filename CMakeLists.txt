@@ -11,7 +11,7 @@ if(WIN32)
     message(STATUS "Configuring for Windows")
 
     # Check if SFML is already installed
-    if(NOT EXISTS "C:/SFML/lib/sfml-graphics-d.dll")  # Adjust as necessary for other DLLs
+    if(NOT EXISTS "C:/SFML/lib/sfml-graphics-d.dll")
         message(STATUS "SFML not found. Installing SFML on Windows...")
 
         file(WRITE "${CMAKE_BINARY_DIR}/install_sfml.bat"
