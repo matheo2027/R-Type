@@ -80,8 +80,7 @@ jobs:
         shell: msys2 {0}
         run: |
           pacman -Sy --noconfirm
-          pacman -S --noconfirm mingw-w64-x86_64-SFML mingw-w64-x86_64-toolchain
-
+          pacman -S --noconfirm <nom_correct_sfml> mingw-w64-x86_64-toolchain  # Remplacez <nom_correct_sfml> par le bon nom du paquet
 
       - name: Remove build directory if it exists
         run: |
@@ -103,6 +102,7 @@ jobs:
               exit /b 1
             )
           )
+        
 
 
 
