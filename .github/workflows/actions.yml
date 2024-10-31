@@ -72,7 +72,7 @@ jobs:
         
       # Téléchargement du fichier ZIP MSYS2 depuis un URL plus rapide
       - name: Download MSYS2 ZIP
-        run: curl -L -o msys2.zip <URL_TO_MSYS2_ZIP>
+        run: curl -L -o msys2.zip "https://github.com/msys2/msys2-installer/releases/download/2021.11.15/msys2-base-x86_64-2021.11.15.zip"
         
       # Extraction du fichier MSYS2 dans C:\msys64
       - name: Extract MSYS2
@@ -111,7 +111,7 @@ jobs:
               exit /b 1
             )
           )
-        
+
 
 
 
