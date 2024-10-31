@@ -72,8 +72,9 @@ jobs:
 
       - name: Install dependencies (SFML)
         run: |
-          choco install mingw --version=8.1.0 -y
-          choco install sfml -y
+          choco install mingw
+          choco install sfml
+          choco install cmake
 
       - name: Remove build directory if it exists
         run: |
