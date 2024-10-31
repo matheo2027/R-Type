@@ -54,7 +54,7 @@ jobs:
         run: |
           for file in ${{ vars.EXECUTABLES }}; do
             if [ ! -x "./build/client/${file}" ]; then
-                echo "File $file does not exist or is not executable"
+                echo "File ${file} does not exist or is not executable"
                 exit 1
             fi
           done
@@ -73,7 +73,7 @@ jobs:
       - name: Download and extract SFML
         run: |
           Invoke-WebRequest -Uri https://www.sfml-dev.org/files/SFML-2.5.1-windows-vc15-64-bit.zip -OutFile sfml.zip
-          Expand-Archive -Path sfml.zip -DestinationPath $env:GITHUB_WORKSPACE\sfml
+          Expand-Archive -Path sfml.zip -DestinationPath "$env:GITHUB_WORKSPACE\sfml"
           Remove-Item -Force sfml.zip
 
       - name: Set SFML environment variables
@@ -113,7 +113,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-            fetch-depth: 0
+          fetch-depth: 0
 
       - name: Set up cache for Doxygen
         id: cache-doxygen
