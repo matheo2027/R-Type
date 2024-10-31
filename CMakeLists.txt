@@ -37,7 +37,7 @@ elseif(UNIX)
     message(STATUS "Configuring for Unix (Linux)")
 
     # Set SFML_DIR to the expected location for SFML installation
-    set(SFML_DIR "/usr/lib/cmake/SFML")  # Adjust this path if necessary
+    set(SFML_DIR "/usr/lib/cmake/SFML")
 
     # Check if SFML is already installed by trying to find it
     find_package(SFML REQUIRED COMPONENTS graphics window system network)
