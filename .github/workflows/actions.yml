@@ -25,6 +25,40 @@ jobs:
         run: |
           find . -name "*.cpp" -o -name "*.hpp" | xargs astyle --style=allman
 
+  check_program_compilation_ubuntu:
+    name: Check Program Compilation on Ubuntu
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: auto_format
+    steps:
+      - name: Checkout GH repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install dependencies (SFML)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libsfml-dev
+
+      - name: Remove build directory
+        run: rm -rf build
+
+      - name: Generate build files
+        run: cmake -S . -B build
+
+      - name: Compile project
+        run: cmake --build build -- -j $(nproc --all)
+
+      - name: Check executables
+        run: |
+          for file in ${{ vars.EXECUTABLES }}; do
+            if [ ! -x "./build/client/${file}" ]; then
+                echo "File ${file} does not exist or is not executable"
+                exit 1
+            fi
+          done
+
   check_program_compilation_windows:
     name: Check Program Compilation on Windows
     runs-on: windows-latest
@@ -78,6 +112,9 @@ jobs:
             )
           )
         
+
+
+
 
   generate_docs:
     runs-on: ubuntu-latest
