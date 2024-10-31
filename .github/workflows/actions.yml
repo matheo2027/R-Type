@@ -70,16 +70,15 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Download and extract SFML
+      - name: Install MSYS2
         run: |
-          Invoke-WebRequest -Uri https://www.sfml-dev.org/files/SFML-2.5.1-windows-vc15-64-bit.zip -OutFile sfml.zip
-          Expand-Archive -Path sfml.zip -DestinationPath "$env:GITHUB_WORKSPACE\sfml"
-          Remove-Item -Force sfml.zip
+          choco install msys2 --version=2021.11.15.0 --params "'/NoShortcuts'" --yes
+          refreshenv
 
-      - name: Set SFML environment variables
+      - name: Install SFML and dependencies
         run: |
-          $env:SFML_DIR = "$env:GITHUB_WORKSPACE\sfml\SFML-2.5.1"
-          echo "SFML_DIR=$env:SFML_DIR" >> $env:GITHUB_ENV
+          C:\msys64\usr\bin\pacman.exe -Syu --noconfirm
+          C:\msys64\usr\bin\pacman.exe -S --noconfirm mingw-w64-x86_64-SFML mingw-w64-x86_64-toolchain
 
       - name: Remove build directory if it exists
         run: |
@@ -88,10 +87,10 @@ jobs:
           }
 
       - name: Generate build files
-        run: cmake -S . -B build -DSFML_DIR=$env:SFML_DIR
+        run: C:\msys64\mingw64\bin\cmake.exe -S . -B build
 
       - name: Compile project
-        run: cmake --build build -- /m
+        run: C:\msys64\mingw64\bin\cmake.exe --build build -- /m
 
       - name: Check executables
         run: |
