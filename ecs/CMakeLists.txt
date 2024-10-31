@@ -17,5 +17,12 @@ find_package(SFML 2.5 COMPONENTS graphics system window network REQUIRED)
 # Inclusion des répertoires d'en-têtes
 target_include_directories(${PROJECT_NAME} PUBLIC include)
 
+
 # Liaison des bibliothèques SFML
-target_link_libraries(${PROJECT_NAME} sfml-graphics sfml-system sfml-window sfml-network)
+
+
+if(WIN32)
+    target_link_libraries(${PROJECT_NAME} sfml-graphics-d sfml-system-d sfml-window-d sfml-network-d)
+elseif(UNIX)
+    target_link_libraries(${PROJECT_NAME} sfml-graphics sfml-system sfml-window sfml-network)
+endif()
