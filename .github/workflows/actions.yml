@@ -73,6 +73,10 @@ jobs:
       - name: Download and install MSYS2
         run: |
           curl -L -o msys2-installer.exe https://github.com/msys2/msys2-installer/releases/download/2021.11.15/msys2-x86_64-2021.11.15.exe
+          if ($LASTEXITCODE -ne 0) {
+              Write-Error "Failed to download MSYS2 installer."
+              exit 1
+          }
           Start-Process -Wait -FilePath msys2-installer.exe -ArgumentList '/S', '/D=C:\msys64'
           Remove-Item -Force msys2-installer.exe
         
@@ -101,6 +105,7 @@ jobs:
               exit /b 1
             )
           )
+
 
 
 
