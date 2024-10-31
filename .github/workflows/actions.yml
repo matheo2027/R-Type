@@ -70,20 +70,16 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Download MSYS2 archive
-        run: curl -L -o msys2.zip <URL_TO_MSYS2_ZIP>
+      - name: Set up MSYS2 environment
+        uses: msys2/setup-msys2@v2
+        with:
+          update: true
+          path-type: mingw64
 
-      - name: Install 7-Zip
-        run: choco install 7zip --yes
-
-      - name: Extract MSYS2 using 7-Zip
-        run: 7z x msys2.zip -oC:\msys64
-
-      - name: Update and install SFML and dependencies
-        shell: bash
+      - name: Install SFML and toolchain
+        shell: msys2 {0}
         run: |
-          C:/msys64/usr/bin/bash -lc "pacman -Syu --noconfirm"
-          C:/msys64/usr/bin/bash -lc "pacman -S --noconfirm mingw-w64-x86_64-SFML mingw-w64-x86_64-toolchain"
+          pacman -S --noconfirm mingw-w64-x86_64-SFML mingw-w64-x86_64-toolchain
 
       - name: Remove build directory if it exists
         run: |
@@ -105,6 +101,7 @@ jobs:
               exit /b 1
             )
           )
+
 
 
 
