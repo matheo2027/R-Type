@@ -62,55 +62,48 @@ jobs:
   check_program_compilation_windows:
     name: Check Program Compilation on Windows
     runs-on: windows-latest
-    timeout-minutes: 15
+    timeout-minutes: 20  # Ajustez selon vos besoins
     needs: auto_format
     steps:
       - name: Checkout GH repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-        
-      - name: Install MSYS2
+
+      - name: Download the MSYS2 installer
         run: |
-          # Download the MSYS2 installer
+          Write-Host "Downloading MSYS2 installer..."
           Invoke-WebRequest -Uri https://github.com/msys2/msys2-installer/releases/latest/download/msys2-x86_64-latest.exe -OutFile msys2-installer.exe
-          # Silent install
-          Start-Process -FilePath msys2-installer.exe -ArgumentList '/S', '/D=C:\msys64' -Wait
-          # Cleanup installer
+          Write-Host "Running MSYS2 installer..."
+          Start-Process -FilePath msys2-installer.exe -ArgumentList '/S', '/D=C:\msys64' -Wait -NoNewWindow
+          Write-Host "Cleaning up..."
           Remove-Item -Force msys2-installer.exe
-        
-      - name: Check MSYS2 Installation
+
+      - name: Add MSYS2 to PATH
         run: |
-          if (Test-Path "C:\msys64") {
-            Write-Host "MSYS2 is installed."
-          } else {
-            Write-Error "MSYS2 is not installed."
-            exit 1
-          }
-        
-      - name: Initialize MSYS2 Environment
+          $env:Path += ";C:\msys64\mingw64\bin"
+          Write-Host "Updated PATH: $env:Path"
+
+      - name: Install dependencies
+        shell: C:\msys64\usr\bin\bash.exe -c
         run: |
-          # Update the MSYS2 package database and install dependencies
-          C:\msys64\usr\bin\bash.exe -c "echo 'Updating package database...'; pacman -Sy --noconfirm; pacman -S --noconfirm mingw-w64-x86_64-toolchain mingw-w64-x86_64-sfml"
-        
-      - name: Install CMake
-        run: |
-          C:\msys64\usr\bin\bash.exe -c "pacman -S --noconfirm mingw-w64-x86_64-cmake"
-        
+          echo 'Updating package database...'
+          pacman -Sy --noconfirm
+          echo 'Installing dependencies...'
+          pacman -S --noconfirm mingw-w64-x86_64-sfml mingw-w64-x86_64-toolchain
+
       - name: Remove build directory if it exists
         run: |
           if (Test-Path build) {
             Remove-Item -Recurse -Force build
           }
-        
+
       - name: Generate build files
-        run: |
-          C:\msys64\usr\bin\bash.exe -c "cmake -S . -B build"
-        
+        run: C:\msys64\mingw64\bin\cmake.exe -S . -B build
+
       - name: Compile project
-        run: |
-          C:\msys64\usr\bin\bash.exe -c "cmake --build build -- /m"
-        
+        run: C:\msys64\mingw64\bin\cmake.exe --build build -- /m
+
       - name: Check executables
         run: |
           for %%f in (${{ vars.EXECUTABLES }}) do (
@@ -119,8 +112,8 @@ jobs:
               exit /b 1
             )
           )
-        
-        
+
+
 
 
 
