@@ -78,8 +78,18 @@ jobs:
             Remove-Item -Force msys2-installer.exe
           }
         
+      - name: Verify MSYS2 Installation
+        run: |
+          if (Test-Path "C:\msys64") {
+            Write-Host "MSYS2 is installed."
+          } else {
+            Write-Error "MSYS2 is not installed."
+            exit 1
+          }
+        
       - name: Update package database and install dependencies
         run: |
+          C:\msys64\usr\bin\bash.exe -c "echo 'Updating package database...'"
           C:\msys64\usr\bin\bash.exe -c "pacman -Sy --noconfirm"
           C:\msys64\usr\bin\bash.exe -c "pacman -S --noconfirm mingw-w64-x86_64-sfml mingw-w64-x86_64-toolchain"
         
@@ -109,6 +119,7 @@ jobs:
               exit /b 1
             )
           )
+
 
 
 
