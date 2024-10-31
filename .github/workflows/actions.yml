@@ -70,17 +70,23 @@ jobs:
         with:
           fetch-depth: 0
         
-      - name: Install Chocolatey
+      - name: Download and install MSYS2
         run: |
-          Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-        
-      - name: Install MSYS2 via Chocolatey
-        run: |
-          choco install msys2 --version=2021.11.15.0 --params "'/NoShortcuts'" --yes
+          curl -L -o msys2-installer.exe https://github.com/msys2/msys2-installer/releases/latest/download/msys2-x86_64-latest.exe
           if ($LASTEXITCODE -ne 0) {
-              Write-Error "Failed to install MSYS2."
+              Write-Error "Failed to download MSYS2 installer."
               exit 1
           }
+        
+          # Vérifie si l'installateur a été téléchargé
+          if (-Not (Test-Path msys2-installer.exe)) {
+              Write-Error "MSYS2 installer was not downloaded."
+              exit 1
+          }
+        
+          # Lancement de l'installateur avec logging
+          Start-Process -Wait -FilePath msys2-installer.exe -ArgumentList '/S', '/D=C:\msys64', '/LOG=C:\msys64\install.log'
+          Remove-Item -Force msys2-installer.exe
         
       - name: Update and install SFML and dependencies
         run: |
@@ -107,6 +113,7 @@ jobs:
               exit /b 1
             )
           )
+
 
 
 
