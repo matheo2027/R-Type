@@ -72,7 +72,6 @@ jobs:
         
       - name: Install MSYS2
         run: |
-          # Vérifiez si MSYS2 est déjà installé
           if (-Not (Test-Path "C:\msys64")) {
             Invoke-WebRequest -Uri https://github.com/msys2/msys2-installer/releases/latest/download/msys2-x86_64-latest.exe -OutFile msys2-installer.exe
             Start-Process -FilePath msys2-installer.exe -ArgumentList '/S', '/D=C:\msys64' -Wait
@@ -81,9 +80,12 @@ jobs:
         
       - name: Update package database and install dependencies
         run: |
-          # Exécutez les commandes pacman dans un shell bash de MSYS2
           C:\msys64\usr\bin\bash.exe -c "C:/msys64/usr/bin/pacman -Sy --noconfirm"
           C:\msys64\usr\bin\bash.exe -c "C:/msys64/usr/bin/pacman -S --noconfirm mingw-w64-x86_64-sfml mingw-w64-x86_64-toolchain"
+        
+      - name: Install CMake
+        run: |
+          C:\msys64\usr\bin\bash.exe -c "pacman -S --noconfirm mingw-w64-x86_64-cmake"
         
       - name: Remove build directory if it exists
         run: |
@@ -92,10 +94,12 @@ jobs:
           }
         
       - name: Generate build files
-        run: C:\msys64\mingw64\bin\cmake.exe -S . -B build
+        run: |
+          C:\msys64\usr\bin\bash.exe -c "cmake -S . -B build"
         
       - name: Compile project
-        run: C:\msys64\mingw64\bin\cmake.exe --build build -- /m
+        run: |
+          C:\msys64\usr\bin\bash.exe -c "cmake --build build -- /m"
         
       - name: Check executables
         run: |
@@ -105,6 +109,7 @@ jobs:
               exit /b 1
             )
           )
+
 
 
 
