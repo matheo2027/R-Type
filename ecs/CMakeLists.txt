@@ -22,7 +22,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC include)
 
 
 if(WIN32)
-    target_link_libraries(${PROJECT_NAME} sfml-graphics-d sfml-system-d sfml-window-d sfml-network-d)
+    target_link_libraries(${PROJECT_NAME} SFML-graphics SFML-system SFML-window SFML-network)
 elseif(UNIX)
     target_link_libraries(${PROJECT_NAME} sfml-graphics sfml-system sfml-window sfml-network)
 endif()
