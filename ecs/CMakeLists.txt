@@ -2,20 +2,21 @@ cmake_minimum_required(VERSION 3.10)
 
 project(r-type_ecs)
 
+set(SFML_DIR "C:/SFML/lib/cmake/SFML")
+
+message(STATUS "CMAKE_PREFIX_PATH: ${CMAKE_PREFIX_PATH}")
+message(STATUS "SFML_DIR: ${SFML_DIR}")
+
 file(GLOB_RECURSE SOURCES src/*.cpp)
 
 list(FILTER SOURCES EXCLUDE REGEX "\\.css$")
 
 add_library(${PROJECT_NAME} STATIC ${SOURCES})
 
-# Définir le chemin vers l'installation de SFML (modifiez-le selon votre installation)
-set(CMAKE_PREFIX_PATH "C:/SFML")
-
 find_package(SFML 2.5 COMPONENTS graphics system window network REQUIRED)
 
 target_include_directories(${PROJECT_NAME} PUBLIC include)
 
-# Liaison des bibliothèques SFML
 if(WIN32)
     target_link_libraries(${PROJECT_NAME} SFML-graphics SFML-system SFML-window SFML-network)
 elseif(UNIX)
