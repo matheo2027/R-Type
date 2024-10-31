@@ -7,19 +7,18 @@ project(r-type)
 if(WIN32)
     message(STATUS "Configuring for Windows")
 
-    # Check if SFML is already installed by checking for its DLLs
-    if(NOT EXISTS "C:/SFML/lib/sfml-graphics-d.dll")  # Modify as necessary for other DLLs
+    # Check if SFML is already installed
+    if(NOT EXISTS "C:/SFML/lib/sfml-graphics-d.dll")  # Adjust as necessary for other DLLs
         message(STATUS "SFML not found. Installing SFML on Windows...")
 
-        # Create a batch file to install SFML
         file(WRITE "${CMAKE_BINARY_DIR}/install_sfml.bat"
             "@echo off\n"
             "echo Installing SFML...\n"
-            "SET SFML_VERSION=2.5.1\n"  # Replace with the desired version
+            "SET SFML_VERSION=2.5.1\n"
             "SET SFML_DIR=C:\\SFML\n"
             "mkdir %SFML_DIR%\n"
-            "curl -L https://www.sfml-dev.org/files/SFML-%SFML_VERSION%-windows-vc15-32-bit.zip -o sfml.zip\n"  # Download the 32-bit version
-            "curl -L https://www.sfml-dev.org/files/SFML-%SFML_VERSION%-windows-vc15-64-bit.zip -o sfml_x64.zip\n"  # Download the 64-bit version
+            "curl -L https://www.sfml-dev.org/files/SFML-%SFML_VERSION%-windows-vc15-32-bit.zip -o sfml.zip\n"
+            "curl -L https://www.sfml-dev.org/files/SFML-%SFML_VERSION%-windows-vc15-64-bit.zip -o sfml_x64.zip\n"
             "echo Extracting files...\n"
             "powershell -Command \"Expand-Archive -Path sfml.zip -DestinationPath %SFML_DIR%\"\n"
             "powershell -Command \"Expand-Archive -Path sfml_x64.zip -DestinationPath %SFML_DIR%\"\n"
