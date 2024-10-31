@@ -85,11 +85,6 @@ jobs:
           C:\msys64\usr\bin\bash.exe -c "pacman -Syu --noconfirm"
           C:\msys64\usr\bin\bash.exe -c "pacman -S --noconfirm mingw-w64-x86_64-SFML mingw-w64-x86_64-toolchain"
 
-      - name: Check downloaded file size
-        run: |
-          $size = (Get-Item msys2-installer.exe).Length
-          Write-Host "Downloaded file size: $size bytes"
-
       - name: Remove build directory if it exists
         run: |
           if (Test-Path build) {
