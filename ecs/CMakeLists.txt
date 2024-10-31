@@ -2,10 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 
 project(r-type_ecs)
 
-set(SFML_DIR "C:/SFML/lib/cmake/SFML")
-
 message(STATUS "CMAKE_PREFIX_PATH: ${CMAKE_PREFIX_PATH}")
-message(STATUS "SFML_DIR: ${SFML_DIR}")
 
 file(GLOB_RECURSE SOURCES src/*.cpp)
 
