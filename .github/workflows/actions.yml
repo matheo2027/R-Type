@@ -76,10 +76,12 @@ jobs:
           update: true
           path-type: mingw64
 
-      - name: Install SFML and toolchain
+      - name: Update package database and install dependencies
         shell: msys2 {0}
         run: |
+          pacman -Sy --noconfirm
           pacman -S --noconfirm mingw-w64-x86_64-SFML mingw-w64-x86_64-toolchain
+
 
       - name: Remove build directory if it exists
         run: |
