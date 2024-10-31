@@ -87,6 +87,10 @@ jobs:
             exit 1
           }
         
+      - name: List MSYS2 Directory
+        run: |
+          Get-ChildItem "C:\msys64\usr\bin"
+        
       - name: Check if pacman exists
         run: |
           if (Test-Path "C:\msys64\usr\bin\pacman.exe") {
@@ -127,6 +131,7 @@ jobs:
               exit /b 1
             )
           )
+
 
 
 
