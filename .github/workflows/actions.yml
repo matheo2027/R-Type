@@ -70,9 +70,9 @@ jobs:
         with:
           fetch-depth: 0
         
-      - name: Set up MSYS2
+      - name: Install MSYS2
         run: |
-          # Installer MSYS2 si nécessaire
+          # Vérifiez si MSYS2 est déjà installé
           if (-Not (Test-Path "C:\msys64")) {
             Invoke-WebRequest -Uri https://github.com/msys2/msys2-installer/releases/latest/download/msys2-x86_64-latest.exe -OutFile msys2-installer.exe
             Start-Process -FilePath msys2-installer.exe -ArgumentList '/S', '/D=C:\msys64' -Wait
@@ -81,8 +81,9 @@ jobs:
         
       - name: Update package database and install dependencies
         run: |
-          C:\msys64\usr\bin\bash.exe -c "pacman -Sy --noconfirm"
-          C:\msys64\usr\bin\bash.exe -c "pacman -S --noconfirm mingw-w64-x86_64-sfml mingw-w64-x86_64-toolchain"
+          # Exécutez les commandes pacman dans un shell bash de MSYS2
+          C:\msys64\usr\bin\bash.exe -c "C:/msys64/usr/bin/pacman -Sy --noconfirm"
+          C:\msys64\usr\bin\bash.exe -c "C:/msys64/usr/bin/pacman -S --noconfirm mingw-w64-x86_64-sfml mingw-w64-x86_64-toolchain"
         
       - name: Remove build directory if it exists
         run: |
@@ -104,8 +105,8 @@ jobs:
               exit /b 1
             )
           )
-        
-        
+
+
 
 
 
