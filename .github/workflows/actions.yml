@@ -62,7 +62,7 @@ jobs:
   check_program_compilation_windows:
     name: Check Program Compilation on Windows
     runs-on: windows-latest
-    timeout-minutes: 15  # Augmenté pour tenir compte de l'installation
+    timeout-minutes: 15
     needs: auto_format
     steps:
       - name: Checkout GH repository
@@ -70,23 +70,13 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Download and install MSYS2
+      - name: Install MSYS2 using winget
         run: |
-          curl -L -o msys2-installer.exe https://github.com/msys2/msys2-installer/releases/latest/download/msys2-x86_64-latest.exe
+          winget install --id MSYS2.MSYS2 -e --silent
           if ($LASTEXITCODE -ne 0) {
-              Write-Error "Failed to download MSYS2 installer."
+              Write-Error "Failed to install MSYS2."
               exit 1
           }
-
-          # Vérifie si l'installateur a été téléchargé
-          if (-Not (Test-Path msys2-installer.exe)) {
-              Write-Error "MSYS2 installer was not downloaded."
-              exit 1
-          }
-
-          # Lancement de l'installateur avec logging
-          Start-Process -Wait -FilePath msys2-installer.exe -ArgumentList '/S', '/D=C:\msys64', '/LOG=C:\msys64\install.log'
-          Remove-Item -Force msys2-installer.exe
 
       - name: Update and install SFML and dependencies
         run: |
@@ -113,6 +103,7 @@ jobs:
               exit /b 1
             )
           )
+
 
 
 
