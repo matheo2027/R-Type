@@ -11,11 +11,13 @@ list(FILTER SOURCES EXCLUDE REGEX "\\.css$")
 # Création de la bibliothèque statique
 add_library(${PROJECT_NAME} STATIC ${SOURCES})
 
-# Recherche de SFML
-find_package(SFML 2.5 COMPONENTS graphics system window network REQUIRED)
+# SFML
+set(SFML_DIR "${CMAKE_SOURCE_DIR}/lib/SFML")
+set(SFML_INCLUDE "${SFML_DIR}/include")
+set(SFML_LIB "${SFML_DIR}/lib")
+
+target_include_directories(${PROJECT_NAME} PUBLIC ${SFML_INCLUDE})
+target_link_libraries(${PROJECT_NAME} PUBLIC sfml-graphics sfml-window sfml-system sfml-network)
 
 # Inclusion des répertoires d'en-têtes
 target_include_directories(${PROJECT_NAME} PUBLIC include)
-
-# Liaison des bibliothèques SFML
-target_link_libraries(${PROJECT_NAME} sfml-graphics sfml-system sfml-window sfml-network)
