@@ -13,7 +13,3 @@ add_subdirectory(lib/SFML)
 add_subdirectory(ecs)
 add_subdirectory(client)
 add_subdirectory(server)
-
-# Compilation options
-set(CMAKE_CXX_STANDARD 11)  # Use the desired C++ version
-set(CMAKE_CXX_STANDARD_REQUIRED ON)

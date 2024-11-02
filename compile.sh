@@ -1,6 +1,6 @@
 rm -rf build
-rm -rf lin
-git sumbodule update --init --recursive
+rm -rf lib
+git submodule update --init --recursive
 cd lib/SFML
 git checkout 2.6.1
 cd ../..

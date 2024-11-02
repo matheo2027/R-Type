@@ -8,16 +8,19 @@ file(GLOB_RECURSE SOURCES src/*.cpp)
 # Exclusion des fichiers indésirables
 list(FILTER SOURCES EXCLUDE REGEX "\\.css$")
 
-# Création de la bibliothèque statique
-add_library(${PROJECT_NAME} STATIC ${SOURCES})
+# Création de l'exécutable
+add_executable(${PROJECT_NAME} ${SOURCES})
+
+# Inclusion des répertoires d'en-têtes
+include_directories(include)
 
 # SFML
 set(SFML_DIR "${CMAKE_SOURCE_DIR}/lib/SFML")
 set(SFML_INCLUDE "${SFML_DIR}/include")
-set(SFML_LIB "${SFML_DIR}/lib")
 
-target_include_directories(${PROJECT_NAME} PUBLIC ${SFML_INCLUDE})
-target_link_libraries(${PROJECT_NAME} PUBLIC sfml-graphics sfml-window sfml-system sfml-network)
+# r_type_ecs
+set(R_TYPE_ECS_DIR "${CMAKE_SOURCE_DIR}/ecs")
+set(R_TYPE_ECS_INCLUDE "${R_TYPE_ECS_DIR}/include")
 
-# Inclusion des répertoires d'en-têtes
-target_include_directories(${PROJECT_NAME} PUBLIC include)
+target_include_directories(${PROJECT_NAME} PUBLIC ${SFML_INCLUDE} ${R_TYPE_ECS_INCLUDE})
+target_link_libraries(${PROJECT_NAME} PUBLIC sfml-graphics sfml-window sfml-system sfml-network r-type_ecs)
