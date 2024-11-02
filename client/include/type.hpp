@@ -82,4 +82,4 @@ typedef size_t usize;
  * @typedef isize
  * @brief Signed size type, typically used for array indexing.
  */
-typedef ssize_t isize;
+typedef size_t isize;

@@ -1,15 +1,14 @@
 cmake_minimum_required(VERSION 3.10)
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF) # Pour éviter d'utiliser les extensions spécifiques au compilateur
-
-# Specify the project name
 project(r-type)
 
-# SFML
+# Set C++ standard
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Ajouter SFML comme sous-répertoire
 add_subdirectory(lib/SFML)
 
-# Add subdirectories
+# Ajouter les sous-répertoires pour les différentes parties du projet
 add_subdirectory(ecs)
 add_subdirectory(client)
-add_subdirectory(server)
+#add_subdirectory(server)
