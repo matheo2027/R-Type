@@ -12,7 +12,6 @@
 #include "Component.hpp"
 
 namespace component {
-
 /**
  * @struct Enemie
  * @brief Represents an enemy in the game.
@@ -22,42 +21,13 @@ namespace component {
  * capabilities.
  */
 struct Enemie : public Component {
-    /**
-     * @brief The speed of the enemy.
-     *
-     * This value determines how fast the enemy moves in the game.
-     * Default value is 100.0f.
-     */
     float speed = 100.0f;
+    float shootingSpeed = 1.0f; // Temps entre chaque tir en secondes
+    float shootingCooldown = 0.0f; // Temps restant avant le prochain tir
 
-    /**
-     * @brief The speed at which the enemy shoots.
-     *
-     * This value represents how quickly the enemy can shoot projectiles.
-     * Default value is 0.5f.
-     */
-    float shootingSpeed = 0.5f;
-
-    /**
-     * @brief The cooldown time before the enemy can shoot again.
-     *
-     * This value indicates the time interval required before the enemy can fire
-     * another shot. Default value is 0.0f.
-     */
-    float shootingCooldown = 0.0f;
-
-    /**
-     * @brief Constructs an Enemie instance.
-     *
-     * @param speed The speed of the enemy (default is 100.0f).
-     * @param shootingSpeed The shooting speed of the enemy (default is 0.5f).
-     */
-    Enemie(float speed = 100.0f, float shootingSpeed = 0.5f)
-        : speed(speed), shootingSpeed(shootingSpeed)
-    {
-    }
+    Enemie(float speed = 100.0f, float shootingSpeed = 1.0f)
+        : speed(speed), shootingSpeed(shootingSpeed), shootingCooldown(0.0f) {}
 };
 
 }
-
 #endif // ENEMIE_HPP

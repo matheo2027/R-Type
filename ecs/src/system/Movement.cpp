@@ -5,6 +5,7 @@
 
 #include "systems/Movement.hpp"
 #include <iostream>
+#include <cmath>
 
 namespace systems
 {
@@ -34,10 +35,18 @@ void Movement::update(float dt)
     for (unsigned int i = 0; i < m_entityManager.size(); i++) {
         auto position = m_entityManager.getComponent<component::Position>(i);
         auto velocity = m_entityManager.getComponent<component::Velocity>(i);
+        auto pattern = m_entityManager.getComponent<component::Pattern>(i);
 
         if (position && velocity) {
+            if (pattern) {
+                pattern->elapsedTime += dt;
+                velocity->vx = pattern->directionX * pattern->speed;
+                velocity->vy = pattern->directionY * pattern->speed + pattern->amplitude * std::sin(pattern->frequency * pattern->elapsedTime);
+            }
             position->x += velocity->vx * dt;
             position->y += velocity->vy * dt;
+
+
         }
     }
 }

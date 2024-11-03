@@ -20,6 +20,7 @@
 #include "systems/Box.hpp"
 #include "systems/Server.hpp"
 #include "systems/Client.hpp"
+#include "systems/Background.hpp"
 
 #include <vector>
 

@@ -70,17 +70,21 @@ void Bullet::bulletMovement(component::Bullet *bullet, component::Velocity *velo
  */
 void Bullet::bulletCollision(component::Bullet *bullet, component::Position *position, component::Box *box, unsigned int id)
 {
+    auto owner = m_entityManager.getComponent<component::Owner>(id);
+
     for (unsigned int i = 0; i < m_entityManager.size(); i++) {
         auto enemie = m_entityManager.getComponent<component::Enemie>(i);
         auto enemieBox = m_entityManager.getComponent<component::Box>(i);
 
         if (enemie && enemieBox) {
             if (box->testCollision(*enemieBox)) {
-                m_entityManager.removeEntity(id);
-                m_entityManager.removeEntity(i);
+                if (owner && owner->ownerType == component::Owner::Type::Player) { // Si la balle appartient au joueur
+                    std::cout << "Collision detected: Bullet ID " << id << " with Enemie ID " << i << std::endl;
+                    m_entityManager.removeEntity(id);
+                    m_entityManager.removeEntity(i);
+                }
             }
         }
     }
 }
-
 }
