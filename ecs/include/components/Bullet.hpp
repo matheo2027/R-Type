@@ -1,11 +1,3 @@
-/**
- * @file Bullet.hpp
- * @brief Declaration of the Bullet component.
- *
- * This file defines the Bullet component, which is used to represent a bullet in the game.
- * It contains the properties of a bullet, such as speed and angle.
- */
-
 #ifndef BULLET_HPP
 #define BULLET_HPP
 
@@ -21,7 +13,6 @@ namespace component {
  * the bullet's speed and angle.
  */
 struct Bullet : public Component {
-    /** The speed of the bullet. */
     float speed; /**< Speed of the bullet in units per second. */
     float angle; /**< Angle at which the bullet is fired in degrees. */
 
@@ -37,6 +28,6 @@ struct Bullet : public Component {
     }
 };
 
-} // namespace component
+}
 
 #endif // BULLET_HPP

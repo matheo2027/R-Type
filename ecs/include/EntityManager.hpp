@@ -14,6 +14,8 @@
 #include "components/Bullet.hpp"
 #include "components/Enemie.hpp"
 #include "components/Box.hpp"
+#include "components/Pattern.hpp"
+#include "components/Background.hpp" // Ajoutez cette ligne
 #include "Entity.hpp"
 
 #include <iostream>

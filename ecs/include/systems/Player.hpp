@@ -5,6 +5,8 @@
 #include "systems/ISystem.hpp"
 #include "components/Velocity.hpp"
 #include "components/Player.hpp"
+#include "components/Position.hpp"
+#include "components/Owner.hpp"
 
 namespace systems
 {

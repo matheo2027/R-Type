@@ -18,6 +18,7 @@
 #include "systems/Enemie.hpp"
 #include "systems/Bullet.hpp"
 #include "systems/Box.hpp"
+#include "systems/Background.hpp"
 
 #include <vector>
 
