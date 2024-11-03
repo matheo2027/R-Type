@@ -1,7 +1,11 @@
+# Supprime le dossier de build
 rm -rf build
-rm -rf lib
-git submodule update --init --recursive
-cd lib/SFML
-git checkout 2.6.1
-cd ../..
-cmake -S . -B build && cmake --build build
+
+# Définir le chemin vers MSYS2 MinGW64 comme CMAKE_PREFIX_PATH
+export CMAKE_PREFIX_PATH="/C/msys64/mingw64"
+
+# Définit le générateur CMake pour utiliser MinGW (gcc)
+cmake -G "MinGW Makefiles" -S . -B build
+
+# Lancer la compilation
+cmake --build build

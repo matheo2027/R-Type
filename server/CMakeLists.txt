@@ -8,6 +8,8 @@ file(GLOB_RECURSE SOURCES src/*.cpp)
 # Exclusion des fichiers indésirables
 list(FILTER SOURCES EXCLUDE REGEX "\\.css$")
 
+include_directories("C:/msys64/mingw64/include")
+
 # Inclusion des répertoires d'en-têtes
 include_directories(include)
 
