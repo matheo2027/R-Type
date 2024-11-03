@@ -33,19 +33,14 @@ A list of technologies used within the project:
 ***
 A little intro about the installation.
 
+If you are on Windows, check the following informations :[Compilation Windows](./CompilationWindows.md)
+
 Installation of dependencies is required:
 
 Install Auto Format Code:
 
 ```bash
 sudo apt-get install -y astyle
-```
-
-Install SFML library:
-
-```bash
-sudo apt-get update
-sudo apt-get install -y libsfml-dev
 ```
 
 Clone and start the project:
@@ -55,16 +50,16 @@ git clone git@github.com:matheo2027/R-Type.git
 cd ./R-Type
 
 # If you want to compile the project :
-./compile.sh
-
-# If you want to create the documentation :
-./StartDoc.sh
+./CompileLinux.sh
 
 # If you want to delete all the documentation files and stop the project :
-./StopAll.sh
+./StopAllLinux.sh
 
-cd build
-./client/r-type_client
+#In one terminal :
+./build/client/r-type_client
+
+#In the seconde:
+./build/server/r-type_server
 ```
 Don't forgot to ```chmod +x``` all the .sh files.
 Before any push please make sure the code is formatted properly with ```Astyle```.
