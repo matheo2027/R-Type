@@ -13,7 +13,7 @@ int main()
     ecs::SystemManager systemManager;
 
     display::SFMLDisplay display;
-    display.init(800, 600, "ECS Game"); 
+    display.init(800, 600, "ECS Game");
 
     systemManager.addSystem<systems::Render>(entityManager, display);
     systemManager.addSystem<systems::Client>(entityManager, sf::IpAddress::LocalHost, 4242, display);
