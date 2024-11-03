@@ -21,7 +21,6 @@
 #include "systems/Server.hpp"
 #include "systems/Client.hpp"
 #include "systems/Background.hpp"
-
 #include <vector>
 
 namespace ecs

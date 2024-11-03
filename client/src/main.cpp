@@ -3,6 +3,12 @@
 #include <display/SFMLDisplay.hpp>
 #include <SystemManager.hpp>
 #include <network/SFMLSocket.hpp>
+#include <systems/Render.hpp>
+#include <systems/Player.hpp>
+#include <systems/Movement.hpp>
+#include <systems/Enemie.hpp>
+#include <systems/Box.hpp>
+#include <components/Background.hpp>
 
 #include <iostream>
 #include <chrono>
@@ -27,6 +33,5 @@ int main()
 
         display.update();
     }
-
     return 0;
 }
