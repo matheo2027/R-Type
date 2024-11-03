@@ -17,6 +17,8 @@ as well as to learn good software engineering practices.
 The goal is to implement a multi-threaded server and a graphical client for a well-known legacy
 video game called R-Type, using a game engine of your own design.
 
+If you want to have all the documentation, you can go here : [Documentation](https://matheo2027.github.io/R-Type)
+
 If you want to see the comparative analysis, read this: [Comparative Analysis](./ComparativeAnalysis.md)
 
 ### Technologies
@@ -68,6 +70,7 @@ Before any push please make sure the code is formatted properly with ```Astyle``
 
 ***
 Here are the different github actions for check compilation, building documentation and auto formatting before push to miror.
+The Daltonian Mode is Avalable ! Type ```c``` for activation !
 
 ![Screenshot](assets/Readme/Actions.png)
 
