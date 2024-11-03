@@ -121,6 +121,7 @@ void Player::playerShoot(float dt, component::Player *player, component::Positio
         m_server.spawnEntity(bullet, position->x, position->y, "assets/img/player_bullet.png");
 
         m_entityManager.addComponent<component::Owner>(bullet, component::Owner::Type::Player); // Ajout du composant Owner
+        m_entityManager.addComponent<component::Owner>(bullet, component::Owner::Type::Player); // Ajout du composant Owner
         player->shootingCooldown = player->shootingSpeed;
     }
     player->shootingCooldown -= dt;
