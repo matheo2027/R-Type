@@ -135,9 +135,27 @@ class SFMLDisplay : public IDisplay
          */
         std::shared_ptr<ITexture> createTexture(const std::string &path);
 
+        /**
+         * @brief Checks if a mouse button is currently pressed.
+         *
+         * @param button The mouse button to check.
+         * @return True if the mouse button is pressed; otherwise, false.
+         */
+        bool isMouseButtonPressed(MouseButton button) const override;
+
+        /**
+         * @brief Gets the current mouse position.
+         *
+         * @param x The x-coordinate of the mouse position.
+         * @param y The y-coordinate of the mouse position.
+         */
+        void getMousePosition(float &x, float &y) const override;
+
     private:
         std::vector<sf::Keyboard::Key> m_keys; /**< Vector storing the state of keyboard keys. */
+        std::vector<sf::Mouse::Button> m_mouse; /**< Vector storing the state of mouse buttons. */
         sf::RenderWindow *m_window; /**< Pointer to the SFML window. */
+        sf::RenderTexture m_renderTexture; /**< The render texture for drawing. */
 };
 
 }

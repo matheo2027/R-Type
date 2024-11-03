@@ -30,6 +30,19 @@ enum Key
 };
 
 /**
+ * @enum MouseButton
+ * @brief Enumeration for mouse button input representation.
+ *
+ * This enumeration defines the mouse buttons that can be checked for input in the application.
+ */
+enum MouseButton
+{
+    LEFT,   ///< Represents the left mouse button.
+    RIGHT,  ///< Represents the right mouse button.
+    MIDDLE, ///< Represents the middle mouse button.
+};
+
+/**
  * @struct ITexture
  * @brief Represents a texture in the application.
  *
@@ -136,6 +149,20 @@ class IDisplay
          * @return A shared pointer to the created texture.
          */
         virtual std::shared_ptr<ITexture> createTexture(const std::string &path) = 0;
+
+        /**
+         * @brief Check if a mouse button is currently pressed.
+         * @param button The mouse button to check.
+         * @return True if the mouse button is pressed; otherwise, false.
+         */
+        virtual bool isMouseButtonPressed(MouseButton button) const = 0;
+
+        /**
+         * @brief Check if a mouse button was released.
+         * @param button The mouse button to check.
+         * @return True if the mouse button was released; otherwise, false.
+         */
+        virtual void getMousePosition(float &x, float &y) const = 0;
 };
 
 }

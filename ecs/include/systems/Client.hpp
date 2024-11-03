@@ -21,6 +21,8 @@ class Client : public ISystem
         ~Client();
         void update(float dt);
 
+        bool isConnected() const { return m_connected; }
+
     private:
         ecs::EntityManager &m_entityManager;
         sf::UdpSocket m_socket;
@@ -28,11 +30,11 @@ class Client : public ISystem
         sf::IpAddress m_serverAddress;
         display::IDisplay &m_display;
 
-        void spawnEntity(ecs::Entity entity, int x, int y, const std::string &texture);
-        void moveEntity(ecs::Entity entity, int x, int y);
+        void spawnEntity(ecs::Entity entity, float x, float y, const std::string &texture);
+        void moveEntity(ecs::Entity entity, float x, float y);
 
         int m_id;
-        bool m_connected = false;
+        bool m_connected = true;
 };
 
 }

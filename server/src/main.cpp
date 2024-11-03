@@ -9,7 +9,7 @@ int main()
     ecs::EntityManager entityManager;
     ecs::SystemManager systemManager;
 
-    systemManager.addSystem<systems::Server>(entityManager);
+    systemManager.addSystem<systems::Server>(entityManager, 4242);
     systems::Server &server = systemManager.getSystem<systems::Server>();
 
     systemManager.addSystem<systems::Movement>(entityManager);

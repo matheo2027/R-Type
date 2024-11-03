@@ -16,10 +16,11 @@ int main()
     display.init(800, 600, "ECS Game"); 
 
     systemManager.addSystem<systems::Render>(entityManager, display);
-
     systemManager.addSystem<systems::Client>(entityManager, sf::IpAddress::LocalHost, 4242, display);
 
-    while (display.isOpen()) {
+    auto &client = systemManager.getSystem<systems::Client>();
+
+    while (display.isOpen() && client.isConnected()) {
         display.clear();
 
         systemManager.update(0.0f);
