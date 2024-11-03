@@ -79,7 +79,6 @@ void Bullet::bulletCollision(component::Bullet *bullet, component::Position *pos
         if (enemie && enemieBox) {
             if (box->testCollision(*enemieBox)) {
                 if (owner && owner->ownerType == component::Owner::Type::Player) { // Si la balle appartient au joueur
-                    std::cout << "Collision detected: Bullet ID " << id << " with Enemie ID " << i << std::endl;
                     m_entityManager.removeEntity(id);
                     m_entityManager.removeEntity(i);
                     m_server.destroyEntity(i);

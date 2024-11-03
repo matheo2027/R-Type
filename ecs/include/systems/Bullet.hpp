@@ -3,7 +3,7 @@
 #include "EntityManager.hpp"
 #include "systems/ISystem.hpp"
 #include "components/Owner.hpp"
-#include "systems/server.hpp"
+#include "systems/Server.hpp"
 
 #include <cmath>
 

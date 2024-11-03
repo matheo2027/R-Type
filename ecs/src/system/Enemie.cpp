@@ -46,8 +46,6 @@ void Enemie::enemieShoot(float dt, component::Enemie *enemie, component::Positio
         m_entityManager.addComponent<component::Box>(bullet, position->x, position->y, 10, 10);
         m_entityManager.addComponent<component::Owner>(bullet, component::Owner::Type::Enemie);
         
-        std::cout << "Bullet created by Enemie ID " << enemie << " at position (" << position->x << ", " << position->y << ")" << std::endl;
-        
         // Utiliser spawnEntity du Server pour créer la texture
         m_server.spawnEntity(bullet, position->x - 20, position->y, "assets/img/enemie_bullet.png");
     }
