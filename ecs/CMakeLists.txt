@@ -10,7 +10,7 @@ list(FILTER SOURCES EXCLUDE REGEX "\\.css$")
 
 add_library(${PROJECT_NAME} STATIC ${SOURCES})
 
-find_package(SFML 2.5 COMPONENTS graphics system window network REQUIRED)
+# find_package(SFML 2.5 COMPONENTS graphics system window network REQUIRED)
 
 target_include_directories(${PROJECT_NAME} PUBLIC include)
 
