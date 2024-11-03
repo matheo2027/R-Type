@@ -6,8 +6,8 @@
 
 namespace systems {
 
-Background::Background(ecs::EntityManager &entityManager, display::IDisplay &display)
-    : m_entityManager(entityManager), m_display(display)
+Background::Background(ecs::EntityManager &entityManager)
+    : m_entityManager(entityManager)
 {
 }
 
@@ -36,7 +36,7 @@ void Background::update(float dt)
 
             // Si l'image sort complètement de l'écran par la gauche
             if (position->x <= -background->width) {
-                // On la replace à droite du background le plus à droite
+                // On la replace derrière le background le plus à droite
                 position->x = rightmostX + background->width;
             }
         }

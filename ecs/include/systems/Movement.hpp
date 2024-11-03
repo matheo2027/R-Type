@@ -15,6 +15,9 @@
 #include "EntityManager.hpp"
 #include "components/Position.hpp"
 #include "components/Velocity.hpp"
+#include "components/Pattern.hpp" 
+#include "systems/Server.hpp"
+#include <cmath>
 
 namespace systems
 {
@@ -34,7 +37,7 @@ class Movement : public ISystem
          * @brief Constructs a Movement system.
          * @param entityManager Reference to the EntityManager for managing entities.
          */
-        Movement(ecs::EntityManager &entityManager);
+        Movement(ecs::EntityManager &entityManager, systems::Server &server);
 
         /**
          * @brief Updates the positions of entities based on their velocity.
@@ -44,6 +47,7 @@ class Movement : public ISystem
 
     private:
         ecs::EntityManager &m_entityManager; ///< Reference to the EntityManager.
+        systems::Server &m_server; ///< Reference to the Server system for spawning entities.
 };
 
 } // namespace systems

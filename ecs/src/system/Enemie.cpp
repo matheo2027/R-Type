@@ -1,11 +1,11 @@
 #define _USE_MATH_DEFINES
-#include "systems/Enemie.hpp"
 #include <cmath>
+#include "systems/Enemie.hpp"
 
 namespace systems {
 
-Enemie::Enemie(ecs::EntityManager &entityManager, display::IDisplay &display)
-    : m_entityManager(entityManager), m_display(display)
+Enemie::Enemie(ecs::EntityManager &entityManager, systems::Server &server)
+    : m_entityManager(entityManager), m_server(server)
 {
 }
 
@@ -44,13 +44,13 @@ void Enemie::enemieShoot(float dt, component::Enemie *enemie, component::Positio
         m_entityManager.addComponent<component::Velocity>(bullet, -200.0f, 0.0f);
         m_entityManager.addComponent<component::Bullet>(bullet, 200.0f, M_PI);
         m_entityManager.addComponent<component::Box>(bullet, position->x, position->y, 10, 10);
-        m_entityManager.addComponent<component::Owner>(bullet, component::Owner::Type::Enemie); // Ajout du composant Owner
+        m_entityManager.addComponent<component::Owner>(bullet, component::Owner::Type::Enemie);
         
-        std::shared_ptr<display::ITexture> texture = m_display.createTexture("../assets/img/enemie_bullet.png");
-        m_entityManager.addComponent<component::Texture>(bullet, texture);
-
-        std::cout << "Enemie ID " << enemie << " shot a bullet ID " << bullet << std::endl;
+        std::cout << "Bullet created by Enemie ID " << enemie << " at position (" << position->x << ", " << position->y << ")" << std::endl;
+        
+        // Utiliser spawnEntity du Server pour créer la texture
+        m_server.spawnEntity(bullet, position->x - 20, position->y, "assets/img/enemie_bullet.png");
     }
 }
 
-} // namespace systems
+}

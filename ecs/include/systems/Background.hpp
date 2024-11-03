@@ -6,15 +6,12 @@
 #include "systems/ISystem.hpp"
 
 namespace systems {
-
 class Background : public ISystem {
 public:
-    Background(ecs::EntityManager &entityManager, display::IDisplay &display);
+    Background(ecs::EntityManager &entityManager);  // Constructeur pour le serveur
     void update(float dt) override;
 
 private:
     ecs::EntityManager &m_entityManager;
-    display::IDisplay &m_display;
 };
-
-} // namespace systems
+}

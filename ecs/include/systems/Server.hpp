@@ -25,7 +25,7 @@ class Server : public ISystem
 
         void spawnEntity(ecs::Entity entity, int x, int y, const std::string &texture);
         void destroyEntity(ecs::Entity entity);
-
+        unsigned int getPlayerNbr() const { return m_clients.size(); };
     private:
         ecs::EntityManager &m_entityManager;
         sf::UdpSocket m_socket;
