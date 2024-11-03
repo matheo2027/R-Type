@@ -214,6 +214,15 @@ void Server::spawnPlayer(sf::IpAddress address, unsigned short port)
         }
         sf::sleep(sf::milliseconds(10));
     }
+
+    for (unsigned int i = 0; i < m_entityManager.size(); i++) {
+        auto texture = m_entityManager.getComponent<component::TextureServer>(i);
+        auto position = m_entityManager.getComponent<component::Position>(i);
+
+        if (texture) {
+            spawnEntity(i, position->x, position->y, texture->path);
+        }
+    }
 }
 
 void Server::spawnEntity(ecs::Entity entity, int x, int y, const std::string &texture)
@@ -244,6 +253,17 @@ void Server::destroyEntity(ecs::Entity entity)
         }
     }
     
+}
+
+void Server::disconnectAll()
+{
+    for (const auto &client : m_clients) {
+        sf::Packet packet;
+        packet << static_cast<int>(messageType::DISCONNECT);
+        packet << client.id;
+
+        m_socket.send(packet, client.address, client.port);
+    }
 }
 
 }

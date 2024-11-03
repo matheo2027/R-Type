@@ -25,6 +25,8 @@ class Server : public ISystem
 
         void spawnEntity(ecs::Entity entity, int x, int y, const std::string &texture);
         void destroyEntity(ecs::Entity entity);
+        void disconnectAll();
+        void setRunning(bool running) { m_running = running; }
 
     private:
         ecs::EntityManager &m_entityManager;
@@ -35,6 +37,7 @@ class Server : public ISystem
         void spawnPlayer(sf::IpAddress address, unsigned short port);
 
         std::vector<ClientInfo> m_clients;
+        bool m_running = true;
 };
 
 }

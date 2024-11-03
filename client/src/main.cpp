@@ -7,25 +7,50 @@
 #include <iostream>
 #include <chrono>
 
-int main()
+int main(int argc, char **argv)
 {
-    ecs::EntityManager entityManager;
-    ecs::SystemManager systemManager;
+    if (argc != 3) {
+        std::cerr << "Usage: " << argv[0] << " <server address> <server port>" << std::endl;
+        return 1;
+    }
 
-    display::SFMLDisplay display;
-    display.init(800, 600, "ECS Game"); 
+    try {
+        std::string serverID = argv[1];
+        unsigned short serverPort = std::stoi(argv[2]);
 
-    systemManager.addSystem<systems::Render>(entityManager, display);
-    systemManager.addSystem<systems::Client>(entityManager, sf::IpAddress::LocalHost, 4242, display);
+        if (serverPort < 1024 || serverPort > 65535) {
+            std::cerr << "Invalid port number. Please use a port between 1024 and 65535." << std::endl;
+            return 84;
+        }
 
-    auto &client = systemManager.getSystem<systems::Client>();
+        ecs::EntityManager entityManager;
+        ecs::SystemManager systemManager;
 
-    while (display.isOpen() && client.isConnected()) {
-        display.clear();
+        display::SFMLDisplay display;
+        display.init(800, 600, "ECS Game"); 
 
-        systemManager.update(0.0f);
+        systemManager.addSystem<systems::Render>(entityManager, display);
+        systemManager.addSystem<systems::Client>(entityManager, sf::IpAddress(serverID), serverPort, display);
+        systemManager.addSystem<systems::ColorBlind>(entityManager, display);
 
-        display.update();
+        auto &client = systemManager.getSystem<systems::Client>();
+
+        auto lastTime = std::chrono::high_resolution_clock::now();
+
+        while (display.isOpen() && client.isConnected()) {
+            auto currentTime = std::chrono::high_resolution_clock::now();
+            float dt = std::chrono::duration<float>(currentTime - lastTime).count();
+            lastTime = currentTime;
+
+            display.clear();
+
+            systemManager.update(dt);
+
+            display.update();
+        }
+    } catch (const std::exception &e) {
+        std::cerr << "An error occurred: " << e.what() << std::endl;
+        return 84;
     }
 
     return 0;

@@ -12,6 +12,10 @@ int main()
     systemManager.addSystem<systems::Server>(entityManager, 4242);
     systems::Server &server = systemManager.getSystem<systems::Server>();
 
+    ecs::Entity test = entityManager.createEntity();
+    entityManager.addComponent<component::Position>(test, 0.0f, 0.0f);
+    entityManager.addComponent<component::TextureServer>(test, "assets/img/player.png");
+
     systemManager.addSystem<systems::Movement>(entityManager);
     systemManager.addSystem<systems::Player>(entityManager, server);
     systemManager.addSystem<systems::Enemie>(entityManager);

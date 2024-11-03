@@ -14,6 +14,7 @@
 #include "components/Bullet.hpp"
 #include "components/Enemie.hpp"
 #include "components/Box.hpp"
+#include "components/TextureServer.hpp"
 #include "Entity.hpp"
 
 #include <iostream>

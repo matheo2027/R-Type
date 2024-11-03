@@ -21,6 +21,7 @@ SFMLDisplay::SFMLDisplay()
     m_keys.push_back(sf::Keyboard::Key::Left);
     m_keys.push_back(sf::Keyboard::Key::Right);
     m_keys.push_back(sf::Keyboard::Key::Space);
+    m_keys.push_back(sf::Keyboard::Key::C);
 
     m_mouse.push_back(sf::Mouse::Button::Left);
     m_mouse.push_back(sf::Mouse::Button::Right);
@@ -47,6 +48,7 @@ SFMLDisplay::~SFMLDisplay()
 void SFMLDisplay::init(int width, int height, const std::string &title)
 {
     m_window = new sf::RenderWindow(sf::VideoMode(width, height), title);
+    m_renderTexture.create(width, height);
 }
 
 /**
@@ -62,6 +64,17 @@ void SFMLDisplay::update()
             m_window->close();
         }
     }
+
+    m_renderTexture.display();
+    sf::Sprite sprite(m_renderTexture.getTexture());
+
+    if (m_colorBlindness != ColorBlindness::NONE) {
+        m_shader.setUniform("texture", m_renderTexture.getTexture());
+        m_window->draw(sprite, &m_shader);
+    } else {
+        m_window->draw(sprite);
+    }
+
     m_window->display();
 }
 
@@ -71,6 +84,7 @@ void SFMLDisplay::update()
 void SFMLDisplay::clear()
 {
     m_window->clear();
+    m_renderTexture.clear();
 }
 
 /**
@@ -104,7 +118,7 @@ void SFMLDisplay::draw(std::shared_ptr<ITexture> &texture, float x, float y)
 
     sfmlTexture.sprite.setPosition(x, y);
 
-    m_window->draw(sfmlTexture.sprite);
+    m_renderTexture.draw(sfmlTexture.sprite);
 }
 
 /**
@@ -170,6 +184,77 @@ void SFMLDisplay::getMousePosition(float &x, float &y) const
     auto pos = sf::Mouse::getPosition(*m_window);
     x = pos.x;
     y = pos.y;
+}
+
+void SFMLDisplay::setColorBlindness(ColorBlindness mode)
+{
+    m_colorBlindness = mode;
+
+    const std::string shaderCode = R"(
+        uniform sampler2D texture;
+        uniform float matrix[9];
+
+        void main()
+        {
+            vec4 color = texture2D(texture, gl_TexCoord[0].xy);
+            vec3 newColor = vec3(0.0);
+
+            newColor.r = dot(color.rgb, vec3(matrix[0], matrix[1], matrix[2]));
+            newColor.g = dot(color.rgb, vec3(matrix[3], matrix[4], matrix[5]));
+            newColor.b = dot(color.rgb, vec3(matrix[6], matrix[7], matrix[8]));
+
+            gl_FragColor = vec4(newColor, color.a);
+        }
+    )";
+
+    if (!m_shader.loadFromMemory(shaderCode, sf::Shader::Fragment)) {
+        throw std::runtime_error("Failed to load shader");
+    }
+
+    float matrix[9] = {0.0f};
+    switch (mode) {
+        case ColorBlindness::PROTANOPIA:
+            matrix[0] = 0.567f;
+            matrix[1] = 0.433f;
+            matrix[2] = 0.0f;
+            matrix[3] = 0.558f;
+            matrix[4] = 0.442f;
+            matrix[5] = 0.0f;
+            matrix[6] = 0.0f;
+            matrix[7] = 0.242f;
+            matrix[8] = 0.758f;
+            break;
+
+        case ColorBlindness::DEUTERANOPIA:
+            matrix[0] = 0.625f;
+            matrix[1] = 0.375f;
+            matrix[2] = 0.0f;
+            matrix[3] = 0.7f;
+            matrix[4] = 0.3f;
+            matrix[5] = 0.0f;
+            matrix[6] = 0.0f;
+            matrix[7] = 0.3f;
+            matrix[8] = 0.7f;
+            break;
+
+        case ColorBlindness::TRITANOPIA:
+            matrix[0] = 0.95f;
+            matrix[1] = 0.05f;
+            matrix[2] = 0.0f;
+            matrix[3] = 0.0f;
+            matrix[4] = 0.433f;
+            matrix[5] = 0.567f;
+            matrix[6] = 0.0f;
+            matrix[7] = 0.475f;
+            matrix[8] = 0.525f;
+            break;
+
+        default:
+            break;
+    }
+
+    m_shader.setUniformArray("matrix", matrix, 9);
+    m_shader.setUniform("texture", sf::Shader::CurrentTexture);
 }
 
 }

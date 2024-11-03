@@ -151,11 +151,20 @@ class SFMLDisplay : public IDisplay
          */
         void getMousePosition(float &x, float &y) const override;
 
+        /**
+         * @brief Sets the color blindness simulation mode.
+         *
+         * @param mode The color blindness mode to set.
+         */
+        void setColorBlindness(ColorBlindness mode) override;
+
     private:
         std::vector<sf::Keyboard::Key> m_keys; /**< Vector storing the state of keyboard keys. */
         std::vector<sf::Mouse::Button> m_mouse; /**< Vector storing the state of mouse buttons. */
         sf::RenderWindow *m_window; /**< Pointer to the SFML window. */
         sf::RenderTexture m_renderTexture; /**< The render texture for drawing. */
+        ColorBlindness m_colorBlindness; /**< The type of color blindness to simulate. */
+        sf::Shader m_shader; /**< The shader for color blindness simulation. */
 };
 
 }

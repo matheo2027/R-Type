@@ -27,6 +27,7 @@ enum Key
     K_LEFT,  ///< Represents the left arrow key.
     K_RIGHT, ///< Represents the right arrow key.
     K_SPACE, ///< Represents the spacebar key.
+    K_C,     ///< Represents the 'C' key.
 };
 
 /**
@@ -40,6 +41,14 @@ enum MouseButton
     LEFT,   ///< Represents the left mouse button.
     RIGHT,  ///< Represents the right mouse button.
     MIDDLE, ///< Represents the middle mouse button.
+};
+
+enum ColorBlindness
+{
+    NONE,
+    PROTANOPIA, // red color blindness
+    DEUTERANOPIA, // green color blindness
+    TRITANOPIA // blue color blindness
 };
 
 /**
@@ -163,6 +172,12 @@ class IDisplay
          * @return True if the mouse button was released; otherwise, false.
          */
         virtual void getMousePosition(float &x, float &y) const = 0;
+
+        /**
+         * @brief Set the color blindness mode.
+         * @param mode The color blindness mode to set.
+         */
+        virtual void setColorBlindness(ColorBlindness mode) = 0;
 };
 
 }
