@@ -4,10 +4,11 @@
 #include "display/IDisplay.hpp"
 #include "systems/ISystem.hpp"
 #include "components/Velocity.hpp"
-#include "components/Player.hpp"
 
 namespace systems
 {
+
+class Server;
 
 /**
  * @class Player
@@ -25,7 +26,7 @@ class Player : public ISystem
          * @param entityManager Reference to the EntityManager to manage game entities.
          * @param display Reference to the display system for rendering.
          */
-        Player(ecs::EntityManager &entityManager, display::IDisplay &display);
+        Player(ecs::EntityManager &entityManager, systems::Server &server); 
 
         /**
          * @brief Updates the player system for the current frame.
@@ -39,16 +40,7 @@ class Player : public ISystem
 
     private:
         ecs::EntityManager &m_entityManager; ///< Reference to the EntityManager for managing entities.
-        display::IDisplay &m_display; ///< Reference to the display system for rendering.
-
-        /**
-         * @brief Handles player input.
-         *
-         * This function processes player input and updates the corresponding player component.
-         *
-         * @param player Pointer to the Player component to update based on input.
-         */
-        void playerInput(component::Player *player);
+        systems::Server &m_server; ///< Reference to the Server system for handling game logic.
 
         /**
          * @brief Handles player movement.

@@ -18,6 +18,8 @@
 #include "systems/Enemie.hpp"
 #include "systems/Bullet.hpp"
 #include "systems/Box.hpp"
+#include "systems/Server.hpp"
+#include "systems/Client.hpp"
 
 #include <vector>
 
@@ -66,6 +68,20 @@ namespace ecs
         void addSystem(Args &&...args)
         {
             systems.push_back(std::make_unique<T>(std::forward<Args>(args)...));
+        }
+
+        template <typename T>
+        T &getSystem()
+        {
+            for (auto &system : systems)
+            {
+                if (dynamic_cast<T *>(system.get()))
+                {
+                    return *dynamic_cast<T *>(system.get());
+                }
+            }
+
+            throw std::runtime_error("System not found.");
         }
 
     private:

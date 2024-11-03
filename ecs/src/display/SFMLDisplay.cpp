@@ -21,6 +21,10 @@ SFMLDisplay::SFMLDisplay()
     m_keys.push_back(sf::Keyboard::Key::Left);
     m_keys.push_back(sf::Keyboard::Key::Right);
     m_keys.push_back(sf::Keyboard::Key::Space);
+
+    m_mouse.push_back(sf::Mouse::Button::Left);
+    m_mouse.push_back(sf::Mouse::Button::Right);
+    m_mouse.push_back(sf::Mouse::Button::Middle);
 }
 
 /**
@@ -111,7 +115,11 @@ void SFMLDisplay::draw(std::shared_ptr<ITexture> &texture, float x, float y)
  */
 bool SFMLDisplay::isKeyPressed(Key key) const
 {
-    return sf::Keyboard::isKeyPressed(m_keys[key]);
+    if (m_window->hasFocus()) {
+        return sf::Keyboard::isKeyPressed(m_keys[key]);
+    }
+
+    return false;
 }
 
 /**
@@ -122,7 +130,11 @@ bool SFMLDisplay::isKeyPressed(Key key) const
  */
 bool SFMLDisplay::isKeyReleased(Key key) const
 {
-    return !sf::Keyboard::isKeyPressed(m_keys[key]);
+    if (m_window->hasFocus()) {
+        return !sf::Keyboard::isKeyPressed(m_keys[key]);
+    }
+
+    return false;
 }
 
 /**
@@ -134,6 +146,30 @@ bool SFMLDisplay::isKeyReleased(Key key) const
 std::shared_ptr<ITexture> SFMLDisplay::createTexture(const std::string &path)
 {
     return std::make_shared<SFMLTexture>(path);
+}
+
+/**
+ * @brief Checks if a specified mouse button is currently pressed.
+ *
+ * @param button The mouse button to check.
+ * @return True if the mouse button is pressed, false otherwise.
+ */
+bool SFMLDisplay::isMouseButtonPressed(MouseButton button) const
+{
+    return sf::Mouse::isButtonPressed(static_cast<sf::Mouse::Button>(button));
+}
+
+/**
+ * @brief Gets the current position of the mouse.
+ *
+ * @param x The x-coordinate of the mouse.
+ * @param y The y-coordinate of the mouse.
+ */
+void SFMLDisplay::getMousePosition(float &x, float &y) const
+{
+    auto pos = sf::Mouse::getPosition(*m_window);
+    x = pos.x;
+    y = pos.y;
 }
 
 }

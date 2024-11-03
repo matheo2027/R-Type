@@ -16,6 +16,7 @@
  */
 
 #include "systems/Player.hpp"
+#include "systems/Server.hpp"
 #include <iostream>
 
 namespace systems
@@ -27,8 +28,8 @@ namespace systems
  * @param entityManager Reference to the EntityManager used to manage entities and their components.
  * @param display Reference to the display interface used for input handling.
  */
-Player::Player(ecs::EntityManager &entityManager, display::IDisplay &display)
-    : m_entityManager(entityManager), m_display(display)
+Player::Player(ecs::EntityManager &entityManager, systems::Server &server)
+    : m_entityManager(entityManager), m_server(server)
 {
 }
 
@@ -48,7 +49,6 @@ void Player::update(float dt)
         auto position = m_entityManager.getComponent<component::Position>(i);
 
         if (player) {
-            playerInput(player);
             playerMovement(player, velocity);
             playerShoot(dt, player, position);
         }
@@ -63,14 +63,6 @@ void Player::update(float dt)
  *
  * @param player Pointer to the Player component to update.
  */
-void Player::playerInput(component::Player *player)
-{
-    player->up = m_display.isKeyPressed(display::Key::K_UP);
-    player->down = m_display.isKeyPressed(display::Key::K_DOWN);
-    player->left = m_display.isKeyPressed(display::Key::K_LEFT);
-    player->right = m_display.isKeyPressed(display::Key::K_RIGHT);
-    player->shoot = m_display.isKeyPressed(display::Key::K_SPACE);
-}
 
 /**
  * @brief Updates the player's velocity based on movement input.
@@ -126,8 +118,7 @@ void Player::playerShoot(float dt, component::Player *player, component::Positio
         m_entityManager.addComponent<component::Velocity>(bullet, 0, 0);
         m_entityManager.addComponent<component::Box>(bullet, position->x + 100, position->y, 10, 10);
 
-        std::shared_ptr<display::ITexture> texture = m_display.createTexture("../assets/img/player_bullet.png");
-        m_entityManager.addComponent<component::Texture>(bullet, texture);
+        m_server.spawnEntity(bullet, position->x, position->y, "assets/img/player_bullet.png");
 
         player->shootingCooldown = player->shootingSpeed;
     }

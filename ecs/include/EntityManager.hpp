@@ -47,12 +47,18 @@ public:
     template <typename T, typename... Args>
     void addComponent(Entity entity, Args&&... args)
     {
-        auto &components = m_components[typeid(T)];
-        if (components.size() <= entity) {
-            components.resize(entity + 1);
+        auto it = m_components.find(typeid(T));
+        if (it == m_components.end()) {
+            m_components[typeid(T)] = std::vector<std::any>();
+            it = m_components.find(typeid(T));
+        }
+
+        if (it->second.size() <= entity) {
+            it->second.resize(entity + 1);
             m_size = entity + 1;
         }
-        components[entity] = T(std::forward<Args>(args)...);
+
+        it->second[entity] = T(std::forward<Args>(args)...);
     }
 
     /**
@@ -81,9 +87,9 @@ public:
      */
     void removeEntity(Entity entity)
     {
-        for (auto &[type, components] : m_components) {
-            if (components.size() > entity) {
-                components[entity].reset();
+        for (auto& pair : m_components) {
+            if (pair.second.size() > entity) {
+                pair.second[entity].reset();
             }
         }
     }
