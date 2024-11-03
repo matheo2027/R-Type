@@ -257,4 +257,15 @@ void Server::destroyEntity(ecs::Entity entity)
     
 }
 
+void Server::disconnectAll()
+{
+    for (const auto &client : m_clients) {
+        sf::Packet packet;
+        packet << static_cast<int>(messageType::DISCONNECT);
+        packet << client.id;
+
+        m_socket.send(packet, client.address, client.port);
+    }
+}
+
 }

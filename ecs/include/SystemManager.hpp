@@ -21,6 +21,7 @@
 #include "systems/Server.hpp"
 #include "systems/Client.hpp"
 #include "systems/Background.hpp"
+#include "systems/ColorBlind.hpp"
 
 #include <vector>
 
