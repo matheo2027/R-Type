@@ -10,8 +10,8 @@ namespace systems
  * This class is responsible for updating the bullets' positions and handling collisions
  * with enemy entities.
  */
-Bullet::Bullet(ecs::EntityManager &entityManager)
-    : m_entityManager(entityManager)
+Bullet::Bullet(ecs::EntityManager &entityManager, systems::Server &server)
+    : m_entityManager(entityManager), m_server(server)
 {
 }
 
@@ -70,17 +70,22 @@ void Bullet::bulletMovement(component::Bullet *bullet, component::Velocity *velo
  */
 void Bullet::bulletCollision(component::Bullet *bullet, component::Position *position, component::Box *box, unsigned int id)
 {
+    auto owner = m_entityManager.getComponent<component::Owner>(id);
+
     for (unsigned int i = 0; i < m_entityManager.size(); i++) {
         auto enemie = m_entityManager.getComponent<component::Enemie>(i);
         auto enemieBox = m_entityManager.getComponent<component::Box>(i);
 
         if (enemie && enemieBox) {
             if (box->testCollision(*enemieBox)) {
-                m_entityManager.removeEntity(id);
-                m_entityManager.removeEntity(i);
+                if (owner && owner->ownerType == component::Owner::Type::Player) { // Si la balle appartient au joueur
+                    m_entityManager.removeEntity(id);
+                    m_entityManager.removeEntity(i);
+                    m_server.destroyEntity(i);
+                    m_server.destroyEntity(id);
+                }
             }
         }
     }
 }
-
 }

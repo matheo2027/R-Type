@@ -13,6 +13,7 @@ Server::Server(ecs::EntityManager &entityManager, unsigned short port)
     }
 
     m_socket.setBlocking(false);
+    m_clients.resize(0);
 }
 
 Server::~Server()
@@ -169,6 +170,7 @@ void Server::spawnPlayer(sf::IpAddress address, unsigned short port)
     m_entityManager.addComponent<component::Player>(player);
     m_entityManager.addComponent<component::Velocity>(player, 0.0f, 0.0f);
     m_entityManager.addComponent<component::Position>(player, 400, 300);
+    m_entityManager.addComponent<component::Health>(player, 2); 
 
     auto playerComponent = m_entityManager.getComponent<component::Player>(player);
     playerComponent->id = player;
@@ -213,6 +215,15 @@ void Server::spawnPlayer(sf::IpAddress address, unsigned short port)
             throw std::runtime_error("Failed to send spawn message.");
         }
         sf::sleep(sf::milliseconds(10));
+    }
+
+    for (unsigned int i = 0; i < m_entityManager.size(); i++) {
+        auto texture = m_entityManager.getComponent<component::TextureServer>(i);
+        auto position = m_entityManager.getComponent<component::Position>(i);
+
+        if (texture) {
+            spawnEntity(i, position->x, position->y, texture->path);
+        }
     }
 }
 

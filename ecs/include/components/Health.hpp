@@ -1,43 +1,29 @@
-/**
- * @file Health.hpp
- * @brief Header file for the Health component.
- *
- * This file defines the Health component used in the ECS (Entity-Component-System)
- * architecture for managing the health status of entities in the game.
- */
-
 #ifndef HEALTH_HPP
 #define HEALTH_HPP
 
 #include "Component.hpp"
 
-namespace component
-{
+namespace component {
 
 /**
  * @struct Health
- * @brief Represents the health status of an entity.
+ * @brief Représente les points de vie d'une entité.
  *
- * The Health struct holds the maximum and current health values for an entity.
- * It is derived from the Component class, enabling it to be used within an
- * ECS framework.
+ * Ce composant définit les points de vie actuels et maximum d'une entité.
  */
 struct Health : public Component {
-    /// The maximum health value of the entity.
-    int max;
-
-    /// The current health value of the entity.
-    int current;
+    int currentHealth; ///< Points de vie actuels.
+    int maxHealth;     ///< Points de vie maximum.
 
     /**
-     * @brief Constructs a Health component with specified maximum and current values.
+     * @brief Constructeur du composant Health.
      *
-     * @param max The maximum health value.
-     * @param current The current health value.
+     * @param maxHealth Points de vie maximum.
      */
-    Health(int max, int current) : max(max), current(current) {}
+    Health(int maxHealth = 2)
+        : currentHealth(maxHealth), maxHealth(maxHealth) {}
 };
 
-} // namespace component
+}
 
 #endif // HEALTH_HPP
