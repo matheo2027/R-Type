@@ -7,7 +7,6 @@
 #include <systems/Player.hpp>
 #include <systems/Movement.hpp>
 #include <systems/Enemie.hpp>
-#include <systems/Enemie.hpp> // Ajoutez cette ligne pour inclure le fichier d'en-tête Enemies.hpp
 #include <systems/Bullet.hpp>
 #include <systems/Box.hpp>
 #include <components/Background.hpp>
