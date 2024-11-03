@@ -10,8 +10,8 @@ namespace systems
  * This class is responsible for updating the bullets' positions and handling collisions
  * with enemy entities.
  */
-Bullet::Bullet(ecs::EntityManager &entityManager)
-    : m_entityManager(entityManager)
+Bullet::Bullet(ecs::EntityManager &entityManager, systems::Server &server)
+    : m_entityManager(entityManager), m_server(server)
 {
 }
 
@@ -82,6 +82,8 @@ void Bullet::bulletCollision(component::Bullet *bullet, component::Position *pos
                     std::cout << "Collision detected: Bullet ID " << id << " with Enemie ID " << i << std::endl;
                     m_entityManager.removeEntity(id);
                     m_entityManager.removeEntity(i);
+                    m_server.destroyEntity(i);
+                    m_server.destroyEntity(id);
                 }
             }
         }

@@ -28,9 +28,7 @@ int main()
 
     while (display.isOpen() && client.isConnected()) {
         display.clear();
-
         systemManager.update(0.0f);
-
         display.update();
     }
     return 0;

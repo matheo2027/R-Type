@@ -22,7 +22,7 @@ namespace component {
  */
 struct Enemie : public Component {
     float speed = 100.0f;
-    float shootingSpeed = 1.0f; // Temps entre chaque tir en secondes
+    float shootingSpeed = 3.0f; // Temps entre chaque tir en secondes
     float shootingCooldown = 0.0f; // Temps restant avant le prochain tir
 
     Enemie(float speed = 100.0f, float shootingSpeed = 1.0f)
