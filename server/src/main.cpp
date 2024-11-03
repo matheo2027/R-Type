@@ -80,11 +80,19 @@ void createWave4(ecs::EntityManager &entityManager, systems::Server &server) {
     }
 }
 
-int main() {
+int main(int argc, char **argv) {
+
+    if (argc != 2) {
+        std::cerr << "Usage: " << argv[0] << " <server port>" << std::endl;
+        return 1;
+    }
+
+    int port = std::stoi(argv[1]);
+
     ecs::EntityManager entityManager;
     ecs::SystemManager systemManager;
 
-    systemManager.addSystem<systems::Server>(entityManager, 4242);
+    systemManager.addSystem<systems::Server>(entityManager, port);
     systems::Server &server = systemManager.getSystem<systems::Server>();
 
     ecs::Entity bg1 = entityManager.createEntity();
