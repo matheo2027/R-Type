@@ -14,10 +14,10 @@ Le projet est organisé en plusieurs dossiers avec une séparation claire entre 
 - **`ecs/`** : Le cœur de l'architecture ECS. Contient les fichiers d'entité, de composants et de systèmes.
     - **`include/`** : Les fichiers d'en-tête des différents composants, systèmes et gestionnaires du moteur ECS.
     - **`src/`** : Les fichiers source du moteur ECS, où la logique est implémentée.
-  
+
 - **`server/`** : Le module serveur, responsable de la gestion des entités du serveur, des vagues d'ennemis, et de la logique de réseau.
     - **`src/`** : Le fichier principal (`main.cpp`) et les systèmes spécifiques au serveur.
-  
+
 - **`client/`** : Le module client, qui gère la communication avec le serveur, l'affichage du jeu, et les interactions avec le joueur.
     - **`src/`** : Le fichier principal (`main.cpp`) et les systèmes liés à l'affichage et à la gestion de la connexion au serveur.
 
@@ -26,7 +26,7 @@ Le projet est organisé en plusieurs dossiers avec une séparation claire entre 
 L'architecture ECS est basée sur trois concepts principaux : **Entités**, **Composants**, et **Systèmes**. Cette approche sépare clairement les données et la logique, permettant une grande flexibilité et extensibilité.
 
 1. **Entity (Entité)** : Une entité représente un objet du jeu (ex : joueur, ennemi, balle). Les entités n'ont pas de données par elles-mêmes mais contiennent des composants qui définissent leur état.
-   
+
 2. **Component (Composant)** : Un composant représente une caractéristique ou une donnée liée à une entité (par exemple : position, texture, vitesse, santé). Chaque entité peut posséder plusieurs composants.
 
 3. **System (Système)** : Un système est responsable de la logique qui manipule les entités en fonction de leurs composants. Les systèmes sont souvent responsables des mises à jour de l'état du jeu (par exemple : un système de mouvement, de rendu, de gestion des collisions, etc.).
@@ -37,7 +37,7 @@ Cette architecture permet de gérer de manière efficace et modulaire les diffé
 
 ### Le Moteur ECS
 
-Le moteur ECS dans le dossier **`ecs/`** est responsable de la gestion des entités et des composants du jeu, ainsi que de l'exécution des systèmes. 
+Le moteur ECS dans le dossier **`ecs/`** est responsable de la gestion des entités et des composants du jeu, ainsi que de l'exécution des systèmes.
 
 #### `EntityManager` (Gestion des Entités)
 
@@ -100,39 +100,26 @@ Cela initialise un système client qui va permettre de se connecter au serveur e
 1. **Cloner le dépôt** :
 
 ```bash
-git clone https://github.com/votre-repository/RTYPE.git
-cd RTYPE
+git clone https://github.com/matheo2027/R-Type
+cd R-TYPE
 ```
 
-2. **Créer un répertoire de construction** :
+2. **Compiler le projet** :
 
 ```bash
-mkdir build
-cd build
+./CompileLinux.sh
 ```
 
-3. **Générer les fichiers de compilation avec CMake** :
-
-```bash
-cmake ..
-```
-
-4. **Compiler le projet** :
-
-```bash
-make
-```
-
-5. **Exécuter le serveur et le client** :
+3. **Exécuter le serveur et le client** :
 
 Pour démarrer le serveur :
 ```bash
-./server/rt-server <port>
+./build/server/r-type_server <port>
 ```
 
 Pour démarrer le client :
 ```bash
-./client/rt-client <server_address> <port>
+./build/client/r-type_client <server_address> <port>
 ```
 
 ## Démarrage du Serveur
