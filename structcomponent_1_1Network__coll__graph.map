@@ -1,0 +1,5 @@
+<map id="component::Network" name="component::Network">
+<area shape="rect" id="Node000001" title="Represents a network component in the Entity&#45;Component&#45;System (ECS) architecture." alt="" coords="15,79,174,104"/>
+<area shape="rect" id="Node000002" href="$structcomponent_1_1Component.html" title="Base class for all components in the ECS." alt="" coords="5,5,184,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="97,44,97,79,92,79,92,44"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="systems::ClientInfo" name="systems::ClientInfo">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,127,153,152"/>
+<area shape="rect" id="Node000002" href="$classsf_1_1IpAddress.html" title="Encapsulate an IPv4 network address." alt="" coords="27,22,132,47"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="82,61,82,126,77,126,77,61"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="147,23,155,27,159,35,150,45,133,48,132,43,148,40,153,34,151,31,144,28"/>
+</map>

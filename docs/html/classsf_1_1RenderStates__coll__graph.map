@@ -1,0 +1,20 @@
+<map id="sf::RenderStates" name="sf::RenderStates">
+<area shape="rect" id="Node000001" title="Define the states used for drawing to a RenderTarget." alt="" coords="228,181,356,207"/>
+<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="371,186,383,194,374,202,356,204,356,199,372,197,377,194,368,190"/>
+<area shape="rect" id="Node000002" href="$structsf_1_1BlendMode.html" title="Blending modes for drawing." alt="" coords="5,93,120,119"/>
+<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="94,123,158,155,237,179,236,184,156,160,92,128"/>
+<area shape="rect" id="Node000003" href="$classsf_1_1Transform.html" title="Define a 3x3 transform matrix." alt="" coords="144,93,251,119"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="222,126,281,179,277,183,219,130"/>
+<area shape="poly" id="edge4_Node000003_Node000003" title=" " alt="" coords="266,97,277,106,269,114,251,117,250,111,267,109,272,106,263,102"/>
+<area shape="rect" id="Node000004" href="$classsf_1_1Texture.html" title="Image living on the graphics card that can be used for drawing." alt="" coords="354,93,443,119"/>
+<area shape="poly" id="edge5_Node000001_Node000004" title=" " alt="" coords="375,129,308,183,305,179,372,125"/>
+<area shape="rect" id="Node000005" href="$classsf_1_1GlResource.html" title="Base class for classes that require an OpenGL context." alt="" coords="321,5,436,31"/>
+<area shape="poly" id="edge6_Node000004_Node000005" title=" " alt="" coords="387,43,398,92,393,93,382,45"/>
+<area shape="rect" id="Node000006" href="$classsf_1_1Shader.html" title="Shader class (vertex, geometry and fragment)" alt="" coords="473,93,559,119"/>
+<area shape="poly" id="edge8_Node000006_Node000005" title=" " alt="" coords="410,36,499,91,496,95,407,40"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="483,127,410,160,336,184,335,179,408,155,481,122"/>
+<area shape="rect" id="Node000007" href="$classsf_1_1NonCopyable.html" title="Utility class that makes any derived class non&#45;copyable." alt="" coords="460,5,588,31"/>
+<area shape="poly" id="edge9_Node000006_Node000007" title=" " alt="" coords="524,45,520,93,514,93,519,44"/>
+<area shape="rect" id="Node000008" href="$structsf_1_1Shader_1_1CurrentTextureType.html" title="Special type that can be passed to setUniform(), and that represents the texture of the object being ..." alt="" coords="613,5,833,31"/>
+<area shape="poly" id="edge10_Node000006_Node000008" title=" " alt="" coords="683,38,545,96,543,91,681,34"/>
+</map>

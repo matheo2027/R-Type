@@ -1,0 +1,5 @@
+<map id="sf::MemoryInputStream" name="sf::MemoryInputStream">
+<area shape="rect" id="Node000001" title="Implementation of input stream based on a memory chunk." alt="" coords="5,79,180,104"/>
+<area shape="rect" id="Node000002" href="$classsf_1_1InputStream.html" title="Abstract class for custom file input streams." alt="" coords="32,5,153,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,44,95,79,90,79,90,44"/>
+</map>

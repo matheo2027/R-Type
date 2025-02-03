@@ -1,0 +1,15 @@
+<map id="sf::Transformable" name="sf::Transformable">
+<area shape="rect" id="Node000001" title="Decomposed transform defined by a position, a rotation and a scale." alt="" coords="249,5,384,31"/>
+<area shape="rect" id="Node000002" href="$classsf_1_1Shape.html" title="Base class for textured shapes with outline." alt="" coords="172,79,253,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="290,41,231,81,228,76,287,36"/>
+<area shape="rect" id="Node000006" href="$classsf_1_1Sprite.html" title="Drawable representation of a texture, with its own transformations, color, etc." alt="" coords="277,79,356,104"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="319,44,319,79,314,79,314,44"/>
+<area shape="rect" id="Node000007" href="$classsf_1_1Text.html" title="Graphical text that can be drawn to a render target." alt="" coords="380,79,448,104"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="345,37,400,76,397,81,342,41"/>
+<area shape="rect" id="Node000003" href="$classsf_1_1CircleShape.html" title="Specialized shape representing a circle." alt="" coords="5,152,124,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="178,112,90,154,88,149,176,107"/>
+<area shape="rect" id="Node000004" href="$classsf_1_1ConvexShape.html" title="Specialized shape representing a convex polygon." alt="" coords="147,152,278,177"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="215,118,215,152,210,152,210,118"/>
+<area shape="rect" id="Node000005" href="$classsf_1_1RectangleShape.html" title="Specialized shape representing a rectangle." alt="" coords="302,152,449,177"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="252,107,350,149,348,154,250,112"/>
+</map>

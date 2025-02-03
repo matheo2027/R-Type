@@ -1,0 +1,31 @@
+<map id="sf::Drawable" name="sf::Drawable">
+<area shape="rect" id="Node000001" title="Abstract base class for objects that can be drawn to a render target." alt="" coords="5,351,108,376"/>
+<area shape="rect" id="Node000002" href="$classEffect.html" title=" " alt="" coords="188,129,247,155"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="73,337,205,153,209,156,78,341"/>
+<area shape="rect" id="Node000008" href="$classsf_1_1Shape.html" title="Base class for textured shapes with outline." alt="" coords="177,276,258,301"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="92,342,155,310,181,299,183,304,157,315,94,347"/>
+<area shape="rect" id="Node000012" href="$classsf_1_1Sprite.html" title="Drawable representation of a texture, with its own transformations, color, etc." alt="" coords="178,325,257,351"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="121,350,177,342,178,347,122,356"/>
+<area shape="rect" id="Node000013" href="$classsf_1_1Text.html" title="Graphical text that can be drawn to a render target." alt="" coords="183,375,251,400"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="122,370,183,380,183,385,122,376"/>
+<area shape="rect" id="Node000014" href="$classsf_1_1VertexArray.html" title="Define a set of one or more 2D primitives." alt="" coords="158,424,277,449"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="95,380,157,410,184,422,182,426,155,415,93,385"/>
+<area shape="rect" id="Node000015" href="$classsf_1_1VertexBuffer.html" title="Vertex buffer storage for one or more 2D primitives." alt="" coords="156,473,279,499"/>
+<area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="79,385,113,423,157,460,179,471,176,476,155,464,109,427,75,389"/>
+<area shape="rect" id="Node000003" href="$classEdge.html" title=" " alt="" coords="373,5,427,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="237,117,275,78,325,40,372,21,374,26,328,44,279,82,241,120"/>
+<area shape="rect" id="Node000004" href="$classGeometry.html" title=" " alt="" coords="357,55,443,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="255,121,326,89,357,78,359,83,328,94,257,126"/>
+<area shape="rect" id="Node000005" href="$classPixelate.html" title=" " alt="" coords="363,104,437,129"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="260,134,362,119,362,124,260,139"/>
+<area shape="rect" id="Node000006" href="$classStormBlink.html" title=" " alt="" coords="353,153,447,179"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="261,145,353,157,352,162,260,150"/>
+<area shape="rect" id="Node000007" href="$classWaveBlur.html" title=" " alt="" coords="358,203,442,228"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="260,158,328,188,362,200,360,205,326,192,257,163"/>
+<area shape="rect" id="Node000009" href="$classsf_1_1CircleShape.html" title="Specialized shape representing a circle." alt="" coords="341,252,459,277"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="271,279,340,270,341,275,272,284"/>
+<area shape="rect" id="Node000010" href="$classsf_1_1ConvexShape.html" title="Specialized shape representing a convex polygon." alt="" coords="335,301,465,327"/>
+<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="272,294,335,302,334,308,272,299"/>
+<area shape="rect" id="Node000011" href="$classsf_1_1RectangleShape.html" title="Specialized shape representing a rectangle." alt="" coords="327,351,473,376"/>
+<area shape="poly" id="edge10_Node000008_Node000011" title=" " alt="" coords="266,304,280,310,328,336,360,348,358,353,326,340,278,315,264,309"/>
+</map>

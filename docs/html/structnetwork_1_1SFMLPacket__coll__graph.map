@@ -1,0 +1,7 @@
+<map id="network::SFMLPacket" name="network::SFMLPacket">
+<area shape="rect" id="Node000001" title=" " alt="" coords="55,93,215,119"/>
+<area shape="rect" id="Node000002" href="$structnetwork_1_1IPacket.html" title=" " alt="" coords="5,5,135,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="89,40,128,91,124,94,85,43"/>
+<area shape="rect" id="Node000003" href="$classsf_1_1Packet.html" title="Utility class to build blocks of data to transfer over the network." alt="" coords="159,5,242,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="186,43,147,94,142,91,181,40"/>
+</map>

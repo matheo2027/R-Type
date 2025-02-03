@@ -1,0 +1,5 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$classdisplay_1_1IDisplay.html" title="Interface for managing the display and rendering in a graphical application." alt="" coords="5,5,135,31"/>
+<area shape="rect" id="Node000001" href="$classdisplay_1_1SFMLDisplay.html" title="Handles the display and rendering using the SFML library." alt="" coords="183,5,343,31"/>
+<area shape="poly" id="edge14_Node000000_Node000001" title=" " alt="" coords="149,15,183,15,183,21,149,21"/>
+</map>

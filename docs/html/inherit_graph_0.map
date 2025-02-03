@@ -1,0 +1,29 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$structcomponent_1_1Component.html" title="Base class for all components in the ECS." alt="" coords="5,301,184,327"/>
+<area shape="rect" id="Node000001" href="$structcomponent_1_1Background.html" title=" " alt="" coords="239,5,419,31"/>
+<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="99,287,113,235,139,168,177,99,202,67,230,40,249,29,252,33,234,44,206,71,181,102,143,170,118,236,104,288"/>
+<area shape="rect" id="Node000002" href="$structcomponent_1_1Box.html" title="Represents a rectangular area defined by its position and dimensions." alt="" coords="265,55,393,80"/>
+<area shape="poly" id="edge2_Node000000_Node000002" title=" " alt="" coords="102,287,119,244,146,190,183,136,205,111,231,89,263,73,265,78,233,94,209,115,187,139,150,193,124,246,107,289"/>
+<area shape="rect" id="Node000003" href="$structcomponent_1_1Bullet.html" title="Represents a bullet in the game." alt="" coords="258,104,399,129"/>
+<area shape="poly" id="edge3_Node000000_Node000003" title=" " alt="" coords="106,288,126,254,154,213,189,173,231,138,257,126,259,131,233,143,193,177,158,217,130,257,111,291"/>
+<area shape="rect" id="Node000004" href="$structcomponent_1_1Enemie.html" title="Represents an enemy in the game." alt="" coords="253,153,405,179"/>
+<area shape="poly" id="edge4_Node000000_Node000004" title=" " alt="" coords="113,289,163,238,195,211,231,188,258,176,260,181,233,192,198,215,166,242,117,293"/>
+<area shape="rect" id="Node000005" href="$structcomponent_1_1Health.html" title="Représente les points de vie d&#39;une entité." alt="" coords="255,203,402,228"/>
+<area shape="poly" id="edge5_Node000000_Node000005" title=" " alt="" coords="125,292,174,264,231,237,266,225,268,231,233,242,177,268,128,296"/>
+<area shape="rect" id="Node000006" href="$structcomponent_1_1Network.html" title="Represents a network component in the Entity&#45;Component&#45;System (ECS) architecture." alt="" coords="249,252,408,277"/>
+<area shape="poly" id="edge6_Node000000_Node000006" title=" " alt="" coords="168,296,267,275,268,280,169,301"/>
+<area shape="rect" id="Node000007" href="$structcomponent_1_1Owner.html" title="Représente le propriétaire d&#39;une entité (par exemple, une balle)." alt="" coords="256,301,401,327"/>
+<area shape="poly" id="edge7_Node000000_Node000007" title=" " alt="" coords="198,311,256,311,256,317,198,317"/>
+<area shape="rect" id="Node000008" href="$structcomponent_1_1Pattern.html" title="Représente un pattern de mouvement pour un ennemi." alt="" coords="254,351,403,376"/>
+<area shape="poly" id="edge8_Node000000_Node000008" title=" " alt="" coords="169,327,268,348,267,353,168,332"/>
+<area shape="rect" id="Node000009" href="$structcomponent_1_1Player.html" title="Represents the player character in the game." alt="" coords="257,400,401,425"/>
+<area shape="poly" id="edge9_Node000000_Node000009" title=" " alt="" coords="129,332,177,359,233,385,271,397,270,402,231,390,175,364,126,336"/>
+<area shape="rect" id="Node000010" href="$structcomponent_1_1Position.html" title="Represents a position in a 2D space." alt="" coords="251,449,406,475"/>
+<area shape="poly" id="edge10_Node000000_Node000010" title=" " alt="" coords="117,335,167,386,199,412,233,434,264,447,262,452,231,439,196,416,163,390,114,339"/>
+<area shape="rect" id="Node000011" href="$structcomponent_1_1Texture.html" title="Represents a texture component in the ECS." alt="" coords="253,499,404,524"/>
+<area shape="poly" id="edge11_Node000000_Node000011" title=" " alt="" coords="111,338,131,371,159,411,193,450,233,484,259,496,257,501,231,488,189,454,154,414,126,374,107,340"/>
+<area shape="rect" id="Node000012" href="$structcomponent_1_1TextureServer.html" title="The Texture component." alt="" coords="232,548,425,573"/>
+<area shape="poly" id="edge12_Node000000_Node000012" title=" " alt="" coords="107,338,124,381,151,434,187,488,209,512,234,533,257,546,254,550,230,538,205,516,183,491,146,437,119,383,102,340"/>
+<area shape="rect" id="Node000013" href="$structcomponent_1_1Velocity.html" title="Represents the velocity of an entity in 2D space." alt="" coords="251,597,406,623"/>
+<area shape="poly" id="edge13_Node000000_Node000013" title=" " alt="" coords="104,339,119,391,144,457,182,525,206,556,234,583,255,595,252,600,230,587,202,559,177,528,139,459,114,393,99,341"/>
+</map>
