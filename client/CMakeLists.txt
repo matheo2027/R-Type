@@ -8,16 +8,16 @@ file(GLOB_RECURSE SOURCES src/*.cpp)
 # Exclusion des fichiers indésirables
 list(FILTER SOURCES EXCLUDE REGEX "\\.css$")
 
-include_directories("C:/msys64/mingw64/include")
-
 # Inclusion des répertoires d'en-têtes
-include_directories(include)
+include_directories(${CMAKE_SOURCE_DIR}/ecs/include)
+include_directories(${CMAKE_SOURCE_DIR}/third_party/SFML/include)
 
-# Spécifiez les répertoires des bibliothèques ECS
+# Spécifiez les répertoires des bibliothèques ECS et SFML
 link_directories(${CMAKE_BINARY_DIR}/ecs)
+link_directories(${CMAKE_SOURCE_DIR}/third_party/SFML/lib)
 
 # Création de l'exécutable
 add_executable(${PROJECT_NAME} ${SOURCES})
 
-# Liaison avec la bibliothèque ECS
-target_link_libraries(${PROJECT_NAME} r-type_ecs)
+# Liaison avec ECS et SFML
+target_link_libraries(${PROJECT_NAME} r-type_ecs sfml-graphics sfml-system sfml-window sfml-network)
