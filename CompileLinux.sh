@@ -2,7 +2,7 @@
 rm -rf build
 
 # Insatll dependences SFML
-sudo dnf install  openal-soft-devel libvorbis-devel libogg-devel flac-devel
+sudo dnf install libudev-devel openal-soft-devel libvorbis-devel libogg-devel flac-devel
 
 # Générer et compiler le projet avec CMake
 cmake -S . -B build  && cmake --build build

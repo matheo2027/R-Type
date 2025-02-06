@@ -39,7 +39,7 @@ jobs:
       - name: Install dependencies (SFML)
         run: |
           sudo apt-get update
-          sudo apt-get install -y libopenal-dev libvorbis-dev libogg-dev libflac-dev
+          sudo apt-get install -y libudev-dev libopenal-dev libvorbis-dev libogg-dev libflac-dev
 
       - name: Remove build directory
         run: rm -rf build
