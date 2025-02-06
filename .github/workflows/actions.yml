@@ -133,7 +133,7 @@ jobs:
   push_to_mirror:
     name: Push to Mirror
     runs-on: ubuntu-latest
-    needs: [generate_docs]
+    needs: [auto_format, generate_docs]
     if: github.event_name == 'push' && needs.generate_docs.result == 'success'
     steps:
       - name: Checkout GH repository
