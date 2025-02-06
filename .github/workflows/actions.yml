@@ -68,7 +68,7 @@ jobs:
   generate_docs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    needs: [check_program_compilation_ubuntu]
+    # needs: [check_program_compilation_ubuntu]
     permissions:
       contents: write
 
