@@ -1,16 +1,24 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.11)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-# Specify the project name
+# Nom du projet
 project(r-type)
 
-# Définition du chemin SFML dans third_party
-set(SFML_DIR ${CMAKE_SOURCE_DIR}/third_party/SFML)
+include(FetchContent)
 
-# Ajout des sous-projets
+# SFML
+FetchContent_Declare(
+    SFML
+    GIT_REPOSITORY https://github.com/SFML/SFML.git
+    GIT_TAG 2.6.x
+    GIT_SHALLOW ON
+    EXCLUDE_FROM_ALL SYSTEM)
+FetchContent_MakeAvailable(SFML)
+
+# Ajouter les sous-projets
 add_subdirectory(ecs)
 add_subdirectory(client)
 add_subdirectory(server)
